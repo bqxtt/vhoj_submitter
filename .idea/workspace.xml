@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="582c4951-4de0-43cc-ac0f-f08e992cf4e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vhoj_submitter.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/loginer/loginer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/hdu/hdu_loginer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/hdu/hdu_submitter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/poj/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/poj/poj_loginer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/poj/poj_loginer_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote_oj/poj/poj_submitter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/submitter/submitter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="D:\Go\1.14.13" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1nXp1CMsrlfbDLGe8RZzVipLCvl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="RunManager" selected="Go Test.TestPOJLoginer_Login in github.com/bqxtt/vhoj_submitter/pkg/remote_oj/poj">
+    <configuration name="go build github.com/bqxtt/vhoj_submitter" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="vhoj_submitter" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/bqxtt/vhoj_submitter" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestPOJLoginer_Login in github.com/bqxtt/vhoj_submitter/pkg/remote_oj/poj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="vhoj_submitter" />
+      <working_directory value="$PROJECT_DIR$/pkg/remote_oj/poj" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/bqxtt/vhoj_submitter/pkg/remote_oj/poj" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestPOJLoginer_Login\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestPOJLoginer_Login in github.com/bqxtt/vhoj_submitter/pkg/remote_oj/poj" />
+        <item itemvalue="Go Build.go build github.com/bqxtt/vhoj_submitter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="561" y="363" key="#GOROOT" timestamp="1611546090728">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="561" y="363" key="#GOROOT/0.0.1536.864@0.0.1536.864" timestamp="1611546090728" />
+    <state x="425" y="209" key="EditFileWatcherDialog" timestamp="1611552470414">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="209" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1611552470414" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1611578437276">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1611578437276" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1611578437276">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1611578437276" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1611578437276">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1611578437276" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1611578437276">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1611578437276" />
+    <state width="1493" height="150" key="GridCell.Tab.1.bottom" timestamp="1611562478159">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="150" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1611562478159" />
+    <state width="1493" height="150" key="GridCell.Tab.1.center" timestamp="1611562478158">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="150" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1611562478158" />
+    <state width="1493" height="150" key="GridCell.Tab.1.left" timestamp="1611562478158">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="150" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1611562478158" />
+    <state width="1493" height="150" key="GridCell.Tab.1.right" timestamp="1611562478158">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="150" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1611562478158" />
+    <state x="270" y="77" key="SettingsEditor" timestamp="1611552471903">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="270" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1611552471903" />
+    <state x="491" y="265" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1611566820118">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="491" y="265" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1536.864@0.0.1536.864" timestamp="1611566820118" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../../../Go/1.14.13/src/net/http/client.go</url>
+          <line>565</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
