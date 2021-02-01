@@ -1,21 +1,21 @@
 package submitter
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants"
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 )
 
 type ISubmitter interface {
-	GetOjInfo() *constants.RemoteOJInfo
+	GetOjInfo() *remote_oj.RemoteOJInfo
 	NeedLogin() bool
-	GetMaxRunId() int64
+	GetMaxRunId(info *common.SubmissionInfo, account *common.RemoteAccount) (string, error)
 	SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) error
 	mustEmbedDefaultSubmitter()
 }
 
 type DefaultSubmitterImpl struct{}
 
-func (DefaultSubmitterImpl) GetOjInfo() *constants.RemoteOJInfo {
+func (DefaultSubmitterImpl) GetOjInfo() *remote_oj.RemoteOJInfo {
 	panic("implement me")
 }
 
@@ -23,7 +23,7 @@ func (DefaultSubmitterImpl) NeedLogin() bool {
 	panic("implement me")
 }
 
-func (DefaultSubmitterImpl) GetMaxRunId() int64 {
+func (DefaultSubmitterImpl) GetMaxRunId(*common.SubmissionInfo, *common.RemoteAccount) (string, error) {
 	panic("implement me")
 }
 

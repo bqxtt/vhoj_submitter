@@ -1,20 +1,20 @@
 package loginer
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants"
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 	"net/http"
 )
 
 type ILoginer interface {
-	GetOJInfo() *constants.RemoteOJInfo
+	GetOJInfo() *remote_oj.RemoteOJInfo
 	Login(account *common.RemoteAccount) ([]*http.Cookie, error)
 	mustEmbedDefaultLoginer()
 }
 
 type DefaultLoginerImpl struct{}
 
-func (DefaultLoginerImpl) GetOJInfo() *constants.RemoteOJInfo {
+func (DefaultLoginerImpl) GetOJInfo() *remote_oj.RemoteOJInfo {
 	panic("implement me")
 }
 

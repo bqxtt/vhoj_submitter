@@ -1,1 +1,0 @@
-Post "http://acm.hdu.edu.cn/userloginex.php?action=login&cid=0&notice=0": 302 response missing Location header

@@ -4,8 +4,9 @@ import "github.com/bqxtt/vhoj_submitter/pkg/common"
 
 type IAccounter interface {
 	FindAccount() (*common.RemoteAccount, error)
-	ReleaseAccount(account *common.RemoteAccount) error
-	Handle(submission *common.SubmissionInfo) error
+	ReleaseAccount(*common.RemoteAccount) error
+	HandleSubmit(*common.SubmissionInfo) error
+	HandleQuery(*common.SubmissionInfo, *common.RemoteAccount) error
 	mustEmbedDefaultAccounterImpl()
 }
 
@@ -17,11 +18,15 @@ func (DefaultAccounterImpl) FindAccount() (*common.RemoteAccount, error) {
 	panic("implement me")
 }
 
-func (DefaultAccounterImpl) ReleaseAccount(account *common.RemoteAccount) error {
+func (DefaultAccounterImpl) ReleaseAccount(*common.RemoteAccount) error {
 	panic("implement me")
 }
 
-func (DefaultAccounterImpl) Handle(submission *common.SubmissionInfo) error {
+func (DefaultAccounterImpl) HandleSubmit(*common.SubmissionInfo) error {
+	panic("implement me")
+}
+
+func (DefaultAccounterImpl) HandleQuery(*common.SubmissionInfo, *common.RemoteAccount) error {
 	panic("implement me")
 }
 

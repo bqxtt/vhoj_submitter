@@ -12,7 +12,14 @@ import (
 
 func TestSubmitCode(t *testing.T) {
 	bootstrap.Init()
-	SubmitCode(&common.SubmissionInfo{RemoteProblemId: "1000", RemoteOJ: constants.HDU})
+	info := &common.SubmissionInfo{
+		RemoteOJ:        constants.HDU,
+		RemoteProblemId: "1000",
+		RemoteLanguage:  "0",
+		RealRunId:       "",
+		SourceCode:      "JTIzaW5jbHVkZSUzQ2JpdHMlMkZzdGRjJTJCJTJCLmglM0UlMEF1c2luZyUyMG5hbWVzcGFjZSUyMHN0ZCUzQiUwQWludCUyMG1haW4oKSUwQSU3QiUwQWludCUyMGElMkNiJTNCJTBBd2hpbGUoY2luJTIwJTNFJTNFJTIwYSUyMCUzRSUzRSUyMGIpJTBBJTdCJTBBY291dCUyMCUzQyUzQyUyMGElMjAlMkIlMjBiJTIwJTNDJTNDJTIwZW5kbCUzQiUwQSU3RCUwQXJldHVybiUyMDAlM0IlMEElN0Q=",
+	}
+	SubmitCode(info)
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit

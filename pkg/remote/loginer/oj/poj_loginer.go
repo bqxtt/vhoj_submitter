@@ -1,7 +1,7 @@
 package oj
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants"
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/bqxtt/vhoj_submitter/pkg/cache"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/loginer"
@@ -16,16 +16,16 @@ type POJLoginer struct {
 	loginer.DefaultLoginerImpl
 }
 
-func (P *POJLoginer) GetOJInfo() *constants.RemoteOJInfo {
+func (P *POJLoginer) GetOJInfo() *remote_oj.RemoteOJInfo {
 	panic("implement me")
 }
 
 func (P *POJLoginer) Login(account *common.RemoteAccount) ([]*http.Cookie, error) {
-	if cookie := cache.CookieCache.Get(util.GetCookieKey(constants.POJ, account)); cookie != nil {
+	if cookie := cache.CookieCache.Get(util.GetCookieKey(remote_oj.POJ, account)); cookie != nil {
 		return cookie, nil
 	}
 
-	url := constants.POJInfo.Host + constants.POJInfo.LoginUrl
+	url := remote_oj.POJInfo.Host + remote_oj.POJInfo.LoginUrl
 	method := "POST"
 
 	payload := strings.NewReader("user_id1=bqx&password1=tcg19981108&B1=login&url=%2F")
@@ -44,7 +44,7 @@ func (P *POJLoginer) Login(account *common.RemoteAccount) ([]*http.Cookie, error
 	defer res.Body.Close()
 
 	cookies := res.Cookies()
-	cache.CookieCache.Put(util.GetCookieKey(constants.POJ, account), cookies, 300)
+	cache.CookieCache.Put(util.GetCookieKey(remote_oj.POJ, account), cookies, 300)
 	//fmt.Printf("cookie: %v", cookies)
 
 	return cookies, nil

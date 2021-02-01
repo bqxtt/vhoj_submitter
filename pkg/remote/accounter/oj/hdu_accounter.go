@@ -1,7 +1,7 @@
 package oj
 
 import (
-	"github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask"
+	ytask "github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/client"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/accounter"
 )
@@ -14,6 +14,7 @@ type HDUAccounter struct {
 }
 
 func (H *HDUAccounter) FindAccount() (*common.RemoteAccount, error) {
+	//todo
 	return &common.RemoteAccount{
 		Username: "bqxtt233",
 		Password: "tcg19981108",
@@ -21,10 +22,11 @@ func (H *HDUAccounter) FindAccount() (*common.RemoteAccount, error) {
 }
 
 func (H *HDUAccounter) ReleaseAccount(account *common.RemoteAccount) error {
-	panic("implement me")
+	//todo
+	return nil
 }
 
-func (H *HDUAccounter) Handle(submission *common.SubmissionInfo) error {
+func (H *HDUAccounter) HandleSubmit(submission *common.SubmissionInfo) error {
 	remoteAccount, err := H.FindAccount()
 	if err != nil {
 		return err
@@ -36,6 +38,18 @@ func (H *HDUAccounter) Handle(submission *common.SubmissionInfo) error {
 		}
 	} else {
 		// todo join waiting queue
+	}
+	return nil
+}
+
+func (H *HDUAccounter) HandleQuery(info *common.SubmissionInfo, account *common.RemoteAccount) error {
+	err := H.ReleaseAccount(account)
+	if err != nil {
+		return err
+	}
+	_, err = ytask.Client.Send("code", "query_result", info)
+	if err != nil {
+		return err
 	}
 	return nil
 }

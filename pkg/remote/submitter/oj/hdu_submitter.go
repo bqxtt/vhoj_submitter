@@ -3,10 +3,12 @@ package oj
 import (
 	"bytes"
 	"fmt"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants"
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/loginer/oj"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/submitter"
+	"github.com/bqxtt/vhoj_submitter/pkg/util"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 )
@@ -17,39 +19,55 @@ type HDUSubmitter struct {
 	submitter.DefaultSubmitterImpl
 }
 
-func (H *HDUSubmitter) GetOjInfo() *constants.RemoteOJInfo {
-	panic("implement me")
+func (H *HDUSubmitter) GetOjInfo() *remote_oj.RemoteOJInfo {
+	return remote_oj.HDUInfo
 }
 
 func (H *HDUSubmitter) NeedLogin() bool {
 	return true
 }
 
-func (H *HDUSubmitter) GetMaxRunId() int64 {
-	panic("implement me")
+func (H *HDUSubmitter) GetMaxRunId(info *common.SubmissionInfo, account *common.RemoteAccount) (string, error) {
+	url := remote_oj.HDUInfo.Host + fmt.Sprintf(remote_oj.HDUInfo.StatusUrl, account.Username, info.RemoteProblemId)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return "", err
+	}
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return "", err
+	}
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "", err
+	}
+	defer res.Body.Close()
+	runId, err := util.ParseHtmlReg(`<td height=22px>(\d+)`, string(body))
+	if err != nil {
+		return "", nil
+	}
+	return runId, nil
 }
 
 func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) error {
-
-	url := "http://acm.hdu.edu.cn/submit.php?action=submit"
+	url := remote_oj.HDUInfo.Host + remote_oj.HDUInfo.SubmitUrl
 	method := "POST"
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
 	_ = writer.WriteField("check", "0")
-	_ = writer.WriteField("_usercode", "JTIzaW5jbHVkZSUzQ2JpdHMlMkZzdGRjJTJCJTJCLmglM0UlMEF1c2luZyUyMG5hbWVzcGFjZSUyMHN0ZCUzQiUwQWludCUyMG1haW4oKSUwQSU3QiUwQWludCUyMGElMkNiJTNCJTBBd2hpbGUoY2luJTIwJTNFJTNFJTIwYSUyMCUzRSUzRSUyMGIpJTBBJTdCJTBBY291dCUyMCUzQyUzQyUyMGElMjAlMkIlMjBiJTIwJTNDJTNDJTIwZW5kbCUzQiUwQSU3RCUwQXJldHVybiUyMDAlM0IlMEElN0Q=")
-	_ = writer.WriteField("problemid", "1000")
-	_ = writer.WriteField("language", "0")
+	_ = writer.WriteField("_usercode", info.SourceCode)
+	_ = writer.WriteField("problemid", info.RemoteProblemId)
+	_ = writer.WriteField("language", info.RemoteLanguage)
 	err := writer.Close()
 	if err != nil {
 		fmt.Println(err)
 		return err
 	}
 
-	client := &http.Client{}
+	client := http.DefaultClient
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	if H.NeedLogin() {
@@ -68,7 +86,6 @@ func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 	req.Header.Set("Content-Type", writer.FormDataContentType())
 	res, err := client.Do(req)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 	defer res.Body.Close()

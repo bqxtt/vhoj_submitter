@@ -1,9 +1,12 @@
 package common
 
-import "github.com/bqxtt/vhoj_common/pkg/common/constants"
+import (
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
+	"github.com/bqxtt/vhoj_common/pkg/common/constants/submission_status"
+)
 
 type SubmissionInfo struct {
-	RemoteOJ        constants.RemoteOJ
+	RemoteOJ        remote_oj.RemoteOJ
 	RemoteProblemId string
 	RemoteLanguage  string
 	RealRunId       string
@@ -15,17 +18,9 @@ type RemoteAccount struct {
 	Password string
 }
 
-//todo move to common
-type RemoteResult int32
-
-const (
-	AC RemoteResult = 1
-	CE RemoteResult = 2
-)
-
-type Language int32
-
-const (
-	CPP  Language = 1
-	JAVA Language = 2
-)
+type RemoteSubmissionResult struct {
+	Status    *submission_status.SubmissionStatus
+	ExeTime   int64
+	ExeMemory int64
+	CEInfo    string
+}
