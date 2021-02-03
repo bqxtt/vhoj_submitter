@@ -8,7 +8,7 @@ import (
 )
 
 func TestHDUQuerier_Query(t *testing.T) {
-	info := &common.SubmissionInfo{RealRunId: "35246418"}
+	info := &common.SubmissionInfo{RealRunId: "35259548"}
 	status, err := HduQuerier.Query(info)
 	if err != nil {
 		fmt.Println(err)

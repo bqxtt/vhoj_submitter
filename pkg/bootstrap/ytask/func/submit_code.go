@@ -1,4 +1,4 @@
-package task_func
+package _func
 
 import (
 	"fmt"
@@ -12,14 +12,14 @@ func SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) {
 	err := submitterImpl.SubmitCode(info, account)
 	if err != nil {
 		//log
-		//db result submit error
+		//todo db result submit error
 		return
 	}
 	fmt.Printf("submit code! info problem id: %v\n", info.RemoteProblemId)
 	runId, err := submitterImpl.GetMaxRunId(info, account)
 	if err != nil {
 		//log
-		//db result
+		//todo db result
 		return
 	}
 	info.RealRunId = runId

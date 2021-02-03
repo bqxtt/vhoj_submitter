@@ -8,8 +8,6 @@ import (
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/adapter/holder"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/querier"
 	"github.com/bqxtt/vhoj_submitter/pkg/util"
-	"io/ioutil"
-	"net/http"
 )
 
 var HduQuerier querier.IQuerier = &HDUQuerier{}
@@ -24,26 +22,17 @@ func (H *HDUQuerier) GetOjInfo() *remote_oj.RemoteOJInfo {
 
 func (H *HDUQuerier) Query(info *common.SubmissionInfo) (*common.RemoteSubmissionResult, error) {
 	url := remote_oj.HDUInfo.Host + fmt.Sprintf(remote_oj.HDUInfo.ResultUrl, info.RealRunId)
-	req, err := http.NewRequest("GET", url, nil)
+	body, err := util.Download(url, "GET")
 	if err != nil {
 		return nil, err
 	}
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
 	reg := fmt.Sprintf(">%v</td><td>[\\s\\S]*?</td><td>([\\s\\S]*?)</td><td>[\\s\\S]*?</td><td>(\\d*?)MS</td><td>(\\d*?)K</td>", info.RealRunId)
-	matches, err := util.ParseHtmlRegSlice(reg, string(body))
+	matches, err := util.ParseHtmlRegSlice(reg, body)
 	if err != nil {
 		//log
 		return nil, err
 	}
-	var result, exeTime, exeMemory string
+	var result, exeTime, exeMemory, ceInfo string
 	if len(matches) > 1 {
 		result = util.HtmlTagFilter(matches[1])
 	}
@@ -56,13 +45,24 @@ func (H *HDUQuerier) Query(info *common.SubmissionInfo) (*common.RemoteSubmissio
 			exeMemory = util.HtmlTagFilter(matches[3])
 		}
 	}
-	if status.StatusType == status_type.CE {
 
+	if status.StatusType == status_type.CE {
+		url = remote_oj.HDUInfo.Host + fmt.Sprintf(remote_oj.HDUInfo.CompileInfoUrl, info.RealRunId)
+		body, err = util.Download(url, "GET")
+		if err != nil {
+			//todo log get compile error info error
+		} else {
+			ceInfo, err = util.ParseHtmlReg(`(<pre>[\s\S]*?</pre>)`, body)
+			if err != nil {
+				//todo log
+			}
+		}
 	}
 	return &common.RemoteSubmissionResult{
+		RawStatus: result,
 		Status:    status,
 		ExeTime:   util.ParseStringToInt64(exeTime),
 		ExeMemory: util.ParseStringToInt64(exeMemory),
-		CEInfo:    "",
+		CEInfo:    ceInfo,
 	}, nil
 }

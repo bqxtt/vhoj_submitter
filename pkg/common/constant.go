@@ -19,6 +19,7 @@ type RemoteAccount struct {
 }
 
 type RemoteSubmissionResult struct {
+	RawStatus string
 	Status    *submission_status.SubmissionStatus
 	ExeTime   int64
 	ExeMemory int64

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/bqxtt/vhoj_submitter/pkg/task_func"
+	"github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/func"
 	ytask "github.com/gojuukaze/YTask/v2"
 )
 
@@ -15,10 +15,10 @@ func InitTaskServer() {
 		ytask.Config.StatusExpires(60*5),
 		ytask.Config.ResultExpires(60*5),
 	)
-	ser.Add("code", "submit_code", task_func.SubmitCode)
-	ser.Add("code", "query_result", task_func.QueryResult)
+	ser.Add("code", "submit_code", _func.SubmitCode)
+	ser.Add("code", "query_result", _func.QueryResult)
 
-	ser.Run("code", 30)
+	ser.Run("code", 30, true)
 
 	//ser.Shutdown(context.Background())
 }

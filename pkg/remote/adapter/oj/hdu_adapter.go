@@ -20,6 +20,12 @@ func (H *HDUAdapter) ToCommonStatus(s string) *submission_status.SubmissionStatu
 		return submission_status.WA
 	case "Compilation Error":
 		return submission_status.CE
+	case "Queuing":
+		return submission_status.QUEUEING
+	case "Compiling":
+		return submission_status.COMPILING
+	case "Running":
+		return submission_status.JUDGING
 	default:
 		return submission_status.FAILED_OTHER
 	}
