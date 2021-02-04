@@ -1,6 +1,6 @@
 package accounter
 
-import "github.com/bqxtt/vhoj_submitter/pkg/common"
+import "github.com/ecnuvj/vhoj_submitter/pkg/common"
 
 type IAccounter interface {
 	FindAccount() (*common.RemoteAccount, error)

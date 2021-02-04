@@ -1,9 +1,9 @@
 package holder
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/submitter"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/submitter/oj"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj"
 )
 
 var Submitters map[remote_oj.RemoteOJ]submitter.ISubmitter

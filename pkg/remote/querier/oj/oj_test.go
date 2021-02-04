@@ -3,7 +3,7 @@ package oj
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/bqxtt/vhoj_submitter/pkg/common"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
 	"testing"
 )
 

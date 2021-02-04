@@ -7,8 +7,10 @@ github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPI
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/aws/aws-sdk-go v1.36.33 h1:ASmYIgWuPW1p01Xxch3ygaptshrEe7Vt+CirmwIqMtI=
 github.com/aws/aws-sdk-go v1.36.33/go.mod h1:hcU610XS61/+aQV88ixoOzUoG7v3b31pl2zKMmprdro=
-github.com/bqxtt/vhoj_common v0.0.0-20210131075602-2159f99c3080 h1:JtYhoZYIGcgw+5SXTdzmlsuiwPHS3X6SFhL6VPSAcWM=
-github.com/bqxtt/vhoj_common v0.0.0-20210131075602-2159f99c3080/go.mod h1:W3sufhllnmv+cED0adWTFycokNnB2i53lYZUQZmmU9I=
+github.com/bqxtt/vhoj_common v0.0.0-20210203161001-fa2c8488b11b h1:tMaOyg75W93qA8PGJHCGepVwrUZ1JAifYgHubtCaxjY=
+github.com/bqxtt/vhoj_common v0.0.0-20210203161001-fa2c8488b11b/go.mod h1:W3sufhllnmv+cED0adWTFycokNnB2i53lYZUQZmmU9I=
+github.com/bqxtt/vhoj_submitter v0.0.0-20210204061729-afa7ac78c3cd h1:0MRtm5ajdh2mAAnVYie0M3lizhXJBscx6odrgTffYRg=
+github.com/bqxtt/vhoj_submitter v0.0.0-20210204061729-afa7ac78c3cd/go.mod h1:+vWDR1wR6mBklAqolzF7cP/9qApM+1ShvNQ7AbGlgzA=
 github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b h1:L/QXpzIa3pOvUGt1D1lA5KjYhPBAN/3iWdP7xeFS9F0=
 github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b/go.mod h1:H0wQNHz2YrLsuXOZozoeDmnHXkNCRmMW0gwFWDfEZDA=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -16,6 +18,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd h1:83Wprp6ROGeiHFAP8WJdI2RoxALQYgdllERc3N5N2DM=
 github.com/denisenkom/go-mssqldb v0.0.0-20191124224453-732737034ffd/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
+github.com/ecnuvj/vhoj_common v0.0.0-20210204125811-c22717ad12a6 h1:j6T9Hbr5UzjkbYi8eGuF1MvlK/NFzD+nGNAaG5okRXw=
+github.com/ecnuvj/vhoj_common v0.0.0-20210204125811-c22717ad12a6/go.mod h1:tJaDg+mrmf461sQRviwN+Xobk2jK6M+KJmcnoAoFgM8=
 github.com/emirpasic/gods v1.12.0 h1:QAUIPSaCu4G+POclxeqb3F+WPpdKqFGlw36+yOzGlrg=
 github.com/emirpasic/gods v1.12.0/go.mod h1:YfzfFFoVP/catgzJb4IKIqXjX78Ha8FMSDh3ymbK86o=
 github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5 h1:Yzb9+7DPaBjB8zlTR87/ElzFsnQfuHnVUVqpZZIcV5Y=

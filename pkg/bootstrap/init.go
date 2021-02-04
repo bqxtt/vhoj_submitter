@@ -1,8 +1,8 @@
 package bootstrap
 
 import (
-	"github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/client"
-	"github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/server"
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/server"
 )
 
 func Init() {

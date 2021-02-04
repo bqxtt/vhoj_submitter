@@ -2,11 +2,11 @@ package _func
 
 import (
 	"fmt"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/status_type"
-	ytask "github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/client"
-	"github.com/bqxtt/vhoj_submitter/pkg/common"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/querier/holder"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
+	ytask "github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/holder"
 	"time"
 )
 

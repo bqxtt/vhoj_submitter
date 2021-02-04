@@ -1,9 +1,9 @@
 package oj
 
 import (
-	ytask "github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/client"
-	"github.com/bqxtt/vhoj_submitter/pkg/common"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/accounter"
+	ytask "github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/accounter"
 )
 
 var HduAccounter accounter.IAccounter = &HDUAccounter{}

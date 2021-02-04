@@ -1,9 +1,9 @@
 package oj
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/language"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/submission_status"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/adapter"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/language"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/submission_status"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/adapter"
 )
 
 var HduAdapter adapter.IAdapter = &HDUAdapter{}

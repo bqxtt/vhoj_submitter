@@ -2,12 +2,12 @@ package oj
 
 import (
 	"fmt"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/status_type"
-	"github.com/bqxtt/vhoj_submitter/pkg/common"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/adapter/holder"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/querier"
-	"github.com/bqxtt/vhoj_submitter/pkg/util"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/adapter/holder"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/querier"
+	"github.com/ecnuvj/vhoj_submitter/pkg/util"
 )
 
 var HduQuerier querier.IQuerier = &HDUQuerier{}

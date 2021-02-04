@@ -1,8 +1,8 @@
 package manager
 
 import (
-	"github.com/bqxtt/vhoj_submitter/pkg/common"
-	"github.com/bqxtt/vhoj_submitter/pkg/remote/accounter/holder"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
+	"github.com/ecnuvj/vhoj_submitter/pkg/remote/accounter/holder"
 )
 
 //提交代码并获取real runid之后结果查询

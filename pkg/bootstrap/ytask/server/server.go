@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/func"
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/func"
 	ytask "github.com/gojuukaze/YTask/v2"
 )
 

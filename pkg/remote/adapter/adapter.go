@@ -1,8 +1,8 @@
 package adapter
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/language"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/submission_status"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/language"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/submission_status"
 )
 
 type IAdapter interface {

@@ -1,8 +1,8 @@
 package common
 
 import (
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/remote_oj"
-	"github.com/bqxtt/vhoj_common/pkg/common/constants/submission_status"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/submission_status"
 )
 
 type SubmissionInfo struct {
