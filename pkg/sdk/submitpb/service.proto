@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
+
+import "base/base.proto";
+
+service SubmitService {
+    rpc SubmitCode(SubmitCodeRequest) returns(SubmitCodeResponse) {};
+}
+
+message SubmitCodeRequest {
+    int64 problem_id = 1;
+    string source_code = 2;
+}
+
+message SubmitCodeResponse {
+    int64 submission_id = 1;
+    base.BaseResponse base_response = 2;
+}
