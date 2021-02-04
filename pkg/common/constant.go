@@ -6,6 +6,7 @@ import (
 )
 
 type SubmissionInfo struct {
+	SubmissionID    uint
 	RemoteOJ        remote_oj.RemoteOJ
 	RemoteProblemId string
 	RemoteLanguage  string

@@ -4,7 +4,8 @@ go 1.14
 
 require (
 	github.com/aws/aws-sdk-go v1.36.33 // indirect
-	github.com/bqxtt/vhoj_common v0.0.0-00010101000000-000000000000
+	github.com/bqxtt/vhoj_common v0.0.0-20210203161001-fa2c8488b11b
+	github.com/ecnuvj/vhoj_db v0.0.0-00010101000000-000000000000
 	github.com/gojuukaze/YTask/v2 v2.3.1
 	github.com/golang/mock v1.4.4 // indirect
 	github.com/golang/snappy v0.0.2 // indirect
@@ -26,3 +27,5 @@ require (
 )
 
 replace github.com/bqxtt/vhoj_common => ../vhoj_common
+
+replace github.com/ecnuvj/vhoj_db => ../vhoj_db

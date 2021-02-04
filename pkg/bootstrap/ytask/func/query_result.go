@@ -6,6 +6,7 @@ import (
 	ytask "github.com/bqxtt/vhoj_submitter/pkg/bootstrap/ytask/client"
 	"github.com/bqxtt/vhoj_submitter/pkg/common"
 	"github.com/bqxtt/vhoj_submitter/pkg/remote/querier/holder"
+	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"time"
 )
 
@@ -16,10 +17,10 @@ func QueryResult(info *common.SubmissionInfo) {
 		//
 		return
 	}
-	//todo db set result
+	_ = submission_mapper.SubmissionMapper.UpdateSubmissionResultById(info.SubmissionID, status.Status.StatusType)
 	fmt.Printf("raw status: %v, type: %v\n", status.RawStatus, status.Status.StatusType)
 	if status.Status.StatusType == status_type.CE {
-		//todo db set ce info
+		_ = submission_mapper.SubmissionMapper.UpdateSubmissionCEInfoById(info.SubmissionID, status.CEInfo)
 		fmt.Printf("ce info: %v\n", status.CEInfo)
 	}
 	if !status.Status.Finished {

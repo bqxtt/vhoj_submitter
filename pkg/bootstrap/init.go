@@ -8,4 +8,5 @@ import (
 func Init() {
 	server.InitTaskServer()
 	client.InitTaskClient()
+	InitDatabase()
 }
