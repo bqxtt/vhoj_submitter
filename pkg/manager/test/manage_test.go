@@ -35,7 +35,7 @@ func TestSubmitCode(t *testing.T) {
 func TestMockHandlerSubmitCode(t *testing.T) {
 	bootstrap.Init()
 	//handler层的工作
-	var submissionId uint = 3
+	var submissionId uint = 4
 	submission, err := submission_mapper.SubmissionMapper.FindSubmissionById(submissionId)
 	if err != nil {
 		fmt.Printf("err: %v", err)
@@ -43,7 +43,7 @@ func TestMockHandlerSubmitCode(t *testing.T) {
 	}
 	info := &common.SubmissionInfo{
 		SubmissionID:    submission.ID,
-		RemoteOJ:        remote_oj.HDU,
+		RemoteOJ:        remote_oj.POJ,
 		RemoteProblemId: "1000",
 		RemoteLanguage:  "0",
 		RealRunId:       "",

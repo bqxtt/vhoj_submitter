@@ -6,33 +6,32 @@ import (
 	"github.com/ecnuvj/vhoj_submitter/pkg/remote/accounter"
 )
 
-var HduAccounter accounter.IAccounter = &HDUAccounter{}
+var PojAccounter accounter.IAccounter = &POJAccounter{}
 
-type HDUAccounter struct {
+type POJAccounter struct {
 	accounter.DefaultAccounterImpl
-	remoteAccounts []*common.RemoteAccount
 }
 
-func (H *HDUAccounter) FindAccount() (*common.RemoteAccount, error) {
+func (P *POJAccounter) FindAccount() (*common.RemoteAccount, error) {
 	//todo
 	return &common.RemoteAccount{
-		Username: "bqxtt233",
+		Username: "bqx",
 		Password: "tcg19981108",
 	}, nil
 }
 
-func (H *HDUAccounter) ReleaseAccount(account *common.RemoteAccount) error {
+func (P *POJAccounter) ReleaseAccount(account *common.RemoteAccount) error {
 	//todo
 	return nil
 }
 
-func (H *HDUAccounter) HandleSubmit(submission *common.SubmissionInfo) error {
-	remoteAccount, err := H.FindAccount()
+func (P *POJAccounter) HandleSubmit(info *common.SubmissionInfo) error {
+	remoteAccount, err := P.FindAccount()
 	if err != nil {
 		return err
 	}
 	if remoteAccount != nil {
-		_, err = ytask.Client.Send("code", "submit_code", submission, remoteAccount)
+		_, err = ytask.Client.Send("code", "submit_code", info, remoteAccount)
 		if err != nil {
 			return err
 		}
@@ -42,8 +41,8 @@ func (H *HDUAccounter) HandleSubmit(submission *common.SubmissionInfo) error {
 	return nil
 }
 
-func (H *HDUAccounter) HandleQuery(info *common.SubmissionInfo, account *common.RemoteAccount) error {
-	err := H.ReleaseAccount(account)
+func (P *POJAccounter) HandleQuery(info *common.SubmissionInfo, account *common.RemoteAccount) error {
+	err := P.ReleaseAccount(account)
 	if err != nil {
 		return err
 	}

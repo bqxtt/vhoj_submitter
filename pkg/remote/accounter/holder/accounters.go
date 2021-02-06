@@ -11,4 +11,5 @@ var Accounters map[remote_oj.RemoteOJ]accounter.IAccounter
 func init() {
 	Accounters = make(map[remote_oj.RemoteOJ]accounter.IAccounter)
 	Accounters[remote_oj.HDU] = oj.HduAccounter
+	Accounters[remote_oj.POJ] = oj.PojAccounter
 }

@@ -9,5 +9,5 @@ func SubmitCode(info *common.SubmissionInfo) {
 	//1.在handler层选择oj，写入info
 	//2.选择对应oj可用账号，委托给对应repo来做
 	accounter := holder.Accounters[info.RemoteOJ]
-	accounter.HandleSubmit(info)
+	_ = accounter.HandleSubmit(info)
 }

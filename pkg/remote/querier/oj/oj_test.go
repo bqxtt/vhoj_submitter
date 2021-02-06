@@ -8,8 +8,23 @@ import (
 )
 
 func TestHDUQuerier_Query(t *testing.T) {
-	info := &common.SubmissionInfo{RealRunId: "35259548"}
-	status, err := HduQuerier.Query(info)
+	info := &common.SubmissionInfo{RealRunId: "35301974"}
+	status, err := HduQuerier.Query(info, nil)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	bytes, _ := json.Marshal(status)
+	fmt.Println(string(bytes))
+}
+
+func TestPOJQuerier_Query(t *testing.T) {
+	info := &common.SubmissionInfo{RealRunId: "22378035"}
+	account := &common.RemoteAccount{
+		Username: "bqx",
+		Password: "tcg19981108",
+	}
+	status, err := PojQuerier.Query(info, account)
 	if err != nil {
 		fmt.Println(err)
 		return

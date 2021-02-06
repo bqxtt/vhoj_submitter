@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 //find the first group matches of the text of the leftmost match of the regular expression in html
@@ -35,6 +36,7 @@ func ParseHtmlRegSlice(reg string, html string) ([]string, error) {
 func HtmlTagFilter(html string) string {
 	compile := regexp.MustCompile(`<[\s\S]*?>`)
 	html = compile.ReplaceAllString(html, "")
+	html = strings.TrimSpace(html)
 	return html
 }
 

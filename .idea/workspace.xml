@@ -20,27 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="582c4951-4de0-43cc-ac0f-f08e992cf4e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/compile_proto.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/base/base.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/base/base.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/any.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/api.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/compiler/plugin.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/descriptor.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/duration.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/empty.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/field_mask.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/source_context.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/struct.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/timestamp.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/type.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/include/google/protobuf/wrappers.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service_grpc.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/handler/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote/accounter/oj/poj_accounter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote/adapter/oj/poj_adapter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/remote/querier/oj/poj_querier.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/service/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/util/response.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/query_result.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/query_result.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/submit_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/submit_code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/manager/submit_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/manager/submit_code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/manager/test/manage_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/manager/test/manage_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/accounter/holder/accounters.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/accounter/holder/accounters.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/accounter/oj/hdu_accounter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/accounter/oj/hdu_accounter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/adapter/holder/adapters.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/adapter/holder/adapters.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/adapter/oj/hdu_adapter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/adapter/oj/hdu_adapter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/loginer/loginer.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/loginer/loginer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/loginer/oj/hdu_loginer.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/loginer/oj/hdu_loginer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/loginer/oj/poj_loginer.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/loginer/oj/poj_loginer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/querier/holder/queriers.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/querier/holder/queriers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/querier/oj/hdu_querier.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/querier/oj/hdu_querier.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/querier/oj/oj_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/querier/oj/oj_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/querier/querier.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/querier/querier.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/submitter/oj/hdu_submitter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/submitter/oj/hdu_submitter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/submitter/oj/oj_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/submitter/oj/oj_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/remote/submitter/oj/poj_submitter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/submitter/oj/poj_submitter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/util/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/util/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/util/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/util/parser.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,69 +107,69 @@
       <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\config" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestMockHandlerSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager/test">
-    <configuration name="TestHDUQuerier_Query in github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestMockHandlerSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/manager/test">
+    <configuration name="TestHDUQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="vhoj_submitter" />
       <working_directory value="$PROJECT_DIR$/pkg/remote/querier/oj" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj" />
+      <package value="github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^\QTestHDUQuerier_Query\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestHDUQuerier_Query in github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="vhoj_submitter" />
-      <working_directory value="$PROJECT_DIR$/pkg/remote/querier/oj" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestHDUQuerier_Query\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestMockHandlerSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestMockHandlerSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/manager/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="vhoj_submitter" />
       <working_directory value="$PROJECT_DIR$/pkg/manager/test" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/bqxtt/vhoj_submitter/pkg/manager/test" />
+      <package value="github.com/ecnuvj/vhoj_submitter/pkg/manager/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^\QTestMockHandlerSubmitCode\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestPOJQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="vhoj_submitter" />
-      <working_directory value="$PROJECT_DIR$/pkg/manager" />
+      <working_directory value="$PROJECT_DIR$/pkg/remote/querier/oj" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/bqxtt/vhoj_submitter/pkg/manager" />
+      <package value="github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestSubmitCode\E$" />
+      <pattern value="^\QTestPOJQuerier_Query\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestPOJSubmitter_GetMaxRunId in github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="vhoj_submitter" />
-      <working_directory value="$PROJECT_DIR$/pkg/manager/test" />
+      <working_directory value="$PROJECT_DIR$/pkg/remote/submitter/oj" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/bqxtt/vhoj_submitter/pkg/manager/test" />
+      <package value="github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestSubmitCode\E$" />
+      <pattern value="^\QTestPOJSubmitter_GetMaxRunId\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestPOJSubmitter_SubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="vhoj_submitter" />
+      <working_directory value="$PROJECT_DIR$/pkg/remote/submitter/oj" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestPOJSubmitter_SubmitCode\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestMockHandlerSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager/test" />
-        <item itemvalue="Go Test.TestSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager/test" />
-        <item itemvalue="Go Test.TestSubmitCode in github.com/bqxtt/vhoj_submitter/pkg/manager (2)" />
-        <item itemvalue="Go Test.TestHDUQuerier_Query in github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj (1)" />
-        <item itemvalue="Go Test.TestHDUQuerier_Query in github.com/bqxtt/vhoj_submitter/pkg/remote/querier/oj" />
+        <item itemvalue="Go Test.TestMockHandlerSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/manager/test" />
+        <item itemvalue="Go Test.TestHDUQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
+        <item itemvalue="Go Test.TestPOJQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
+        <item itemvalue="Go Test.TestPOJSubmitter_GetMaxRunId in github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" />
+        <item itemvalue="Go Test.TestPOJSubmitter_SubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/remote/submitter/oj" />
       </list>
     </recent_temporary>
   </component>
@@ -199,38 +208,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="209" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1611552470414" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1612442942602">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1612593319004">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612442942602" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1612442942602">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612593319004" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1612593319003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612442942602" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1612442942601">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612593319003" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1612593319003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612442942601" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1612442942602">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612593319003" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1612593319003">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612442942602" />
-    <state width="1493" height="245" key="GridCell.Tab.1.bottom" timestamp="1611989755268">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612593319003" />
+    <state width="1493" height="245" key="GridCell.Tab.1.bottom" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="245" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1611989755268" />
-    <state width="1493" height="245" key="GridCell.Tab.1.center" timestamp="1611989755268">
+    <state width="1493" height="245" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612587144833" />
+    <state width="1493" height="245" key="GridCell.Tab.1.center" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="245" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1611989755268" />
-    <state width="1493" height="245" key="GridCell.Tab.1.left" timestamp="1611989755268">
+    <state width="1493" height="245" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1612587144833" />
+    <state width="1493" height="245" key="GridCell.Tab.1.left" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="245" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1611989755268" />
-    <state width="1493" height="245" key="GridCell.Tab.1.right" timestamp="1611989755268">
+    <state width="1493" height="245" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1612587144833" />
+    <state width="1493" height="245" key="GridCell.Tab.1.right" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="245" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1611989755268" />
+    <state width="1493" height="245" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1612587144833" />
     <state x="270" y="77" key="SettingsEditor" timestamp="1612454790098">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -259,6 +268,11 @@
           <url>file://$PROJECT_DIR$/pkg/remote/oj/hdu/hdu_test.go</url>
           <line>13</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/pkg/remote/submitter/oj/hdu_submitter.go</url>
+          <line>78</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

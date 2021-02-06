@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
+option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitpb";
 
 import "base/base.proto";
 
@@ -9,8 +9,11 @@ service SubmitService {
 }
 
 message SubmitCodeRequest {
-    int64 problem_id = 1;
-    string source_code = 2;
+    uint64 problem_id = 1;
+    uint64 user_id = 2;
+    int32 language = 3;
+    int32 contest_id = 4;
+    string source_code = 5;
 }
 
 message SubmitCodeResponse {

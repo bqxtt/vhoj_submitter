@@ -10,9 +10,9 @@ import (
 	"time"
 )
 
-func QueryResult(info *common.SubmissionInfo) {
+func QueryResult(info *common.SubmissionInfo, account *common.RemoteAccount) {
 	querier := holder.Queriers[info.RemoteOJ]
-	status, err := querier.Query(info)
+	status, err := querier.Query(info, account)
 	if err != nil {
 		//
 		return
@@ -24,7 +24,7 @@ func QueryResult(info *common.SubmissionInfo) {
 		fmt.Printf("ce info: %v\n", status.CEInfo)
 	}
 	if !status.Status.Finished {
-		_, err := ytask.Client.SetTaskCtl(ytask.Client.RunAfter, 1*time.Second).Send("code", "query_result", info)
+		_, err := ytask.Client.SetTaskCtl(ytask.Client.RunAfter, 1*time.Second).Send("code", "query_result", info, account)
 		if err != nil {
 			return
 		}

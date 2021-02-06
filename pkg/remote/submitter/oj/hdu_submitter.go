@@ -64,31 +64,27 @@ func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 		return err
 	}
 
-	client := http.DefaultClient
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
 		return err
 	}
 	if H.NeedLogin() {
-		cookies, err := oj.HduLoginer.Login(account)
+		req, err = oj.HduLoginer.Login(req, account)
 		if err != nil {
 			return err
 		}
-		if cookies != nil {
-			for _, cookie := range cookies {
-				req.Header.Add("Cookie", cookie.Name+"="+cookie.Value)
-			}
-		}
 	}
-	//fmt.Printf("cookie: %v", req.Header.Get("Cookie"))
 
 	req.Header.Set("Content-Type", writer.FormDataContentType())
-	res, err := client.Do(req)
+	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
 	}
 	defer res.Body.Close()
+
+	body, _ := ioutil.ReadAll(res.Body)
+	fmt.Println(string(body))
 
 	return nil
 }

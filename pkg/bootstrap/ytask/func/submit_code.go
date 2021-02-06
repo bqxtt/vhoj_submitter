@@ -25,5 +25,6 @@ func SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) {
 		return
 	}
 	info.RealRunId = runId
+	fmt.Printf("real run id: %v\n", runId)
 	manager.ResultQuery(info, account)
 }

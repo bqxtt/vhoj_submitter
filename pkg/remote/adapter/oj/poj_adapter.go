@@ -6,31 +6,31 @@ import (
 	"github.com/ecnuvj/vhoj_submitter/pkg/remote/adapter"
 )
 
-var HduAdapter adapter.IAdapter = &HDUAdapter{}
+var PojAdapter adapter.IAdapter = &POJAdapter{}
 
-type HDUAdapter struct {
+type POJAdapter struct {
 	adapter.DefaultAdapterImpl
 }
 
-func (H *HDUAdapter) ToCommonStatus(s string) *submission_status.SubmissionStatus {
+func (P *POJAdapter) ToCommonStatus(s string) *submission_status.SubmissionStatus {
 	switch s {
 	case "Accepted":
 		return submission_status.AC
 	case "Wrong Answer":
 		return submission_status.WA
-	case "Compilation Error":
+	case "Compile Error":
 		return submission_status.CE
-	case "Presentation Error":
-		return submission_status.PE
-	case "Runtime Error(ACCESS_VIOLATION)":
+	case "Runtime Error":
 		return submission_status.RE
-	case "Time Limit Exceeded":
-		return submission_status.TLE
 	case "Memory Limit Exceeded":
 		return submission_status.MLE
+	case "Time Limit Exceeded":
+		return submission_status.TLE
 	case "Output Limit Exceeded":
 		return submission_status.OLE
-	case "Queuing":
+	case "Presentation Error":
+		return submission_status.PE
+	case "Waiting":
 		return submission_status.QUEUEING
 	case "Compiling":
 		return submission_status.COMPILING
@@ -41,10 +41,10 @@ func (H *HDUAdapter) ToCommonStatus(s string) *submission_status.SubmissionStatu
 	}
 }
 
-func (H *HDUAdapter) ToCommonLanguage(s string) language.Language {
+func (P *POJAdapter) ToCommonLanguage(s string) language.Language {
 	panic("implement me")
 }
 
-func (H *HDUAdapter) ToOJLanguage(language language.Language) string {
+func (P *POJAdapter) ToOJLanguage(language language.Language) string {
 	panic("implement me")
 }

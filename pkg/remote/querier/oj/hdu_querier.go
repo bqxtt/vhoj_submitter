@@ -20,9 +20,9 @@ func (H *HDUQuerier) GetOjInfo() *remote_oj.RemoteOJInfo {
 	return remote_oj.HDUInfo
 }
 
-func (H *HDUQuerier) Query(info *common.SubmissionInfo) (*common.RemoteSubmissionResult, error) {
+func (H *HDUQuerier) Query(info *common.SubmissionInfo, account *common.RemoteAccount) (*common.RemoteSubmissionResult, error) {
 	url := remote_oj.HDUInfo.Host + fmt.Sprintf(remote_oj.HDUInfo.ResultUrl, info.RealRunId)
-	body, err := util.Download(url, "GET")
+	body, err := util.Download(url, "GET", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func (H *HDUQuerier) Query(info *common.SubmissionInfo) (*common.RemoteSubmissio
 
 	if status.StatusType == status_type.CE {
 		url = remote_oj.HDUInfo.Host + fmt.Sprintf(remote_oj.HDUInfo.CompileInfoUrl, info.RealRunId)
-		body, err = util.Download(url, "GET")
+		body, err = util.Download(url, "GET", nil)
 		if err != nil {
 			//todo log get compile error info error
 		} else {

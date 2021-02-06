@@ -7,7 +7,7 @@ import (
 
 type IQuerier interface {
 	GetOjInfo() *remote_oj.RemoteOJInfo
-	Query(info *common.SubmissionInfo) (*common.RemoteSubmissionResult, error)
+	Query(info *common.SubmissionInfo, account *common.RemoteAccount) (*common.RemoteSubmissionResult, error)
 	mustEmbedDefaultQuerierImpl()
 }
 
@@ -17,7 +17,7 @@ func (DefaultQuerierImpl) GetOjInfo() *remote_oj.RemoteOJInfo {
 	panic("implement me")
 }
 
-func (DefaultQuerierImpl) Query(*common.SubmissionInfo) (*common.RemoteSubmissionResult, error) {
+func (DefaultQuerierImpl) Query(*common.SubmissionInfo, *common.RemoteAccount) (*common.RemoteSubmissionResult, error) {
 	panic("implement me")
 }
 

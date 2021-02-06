@@ -8,7 +8,7 @@ import (
 
 type ILoginer interface {
 	GetOJInfo() *remote_oj.RemoteOJInfo
-	Login(account *common.RemoteAccount) ([]*http.Cookie, error)
+	Login(req *http.Request, account *common.RemoteAccount) (*http.Request, error)
 	mustEmbedDefaultLoginer()
 }
 
@@ -18,7 +18,7 @@ func (DefaultLoginerImpl) GetOJInfo() *remote_oj.RemoteOJInfo {
 	panic("implement me")
 }
 
-func (DefaultLoginerImpl) Login(*common.RemoteAccount) ([]*http.Cookie, error) {
+func (DefaultLoginerImpl) Login(*http.Request, *common.RemoteAccount) (*http.Request, error) {
 	panic("implement me")
 }
 
