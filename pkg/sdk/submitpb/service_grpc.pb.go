@@ -18,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SubmitServiceClient interface {
 	SubmitCode(ctx context.Context, in *SubmitCodeRequest, opts ...grpc.CallOption) (*SubmitCodeResponse, error)
+	ReSubmitCode(ctx context.Context, in *ReSubmitCodeRequest, opts ...grpc.CallOption) (*ReSubmitCodeResponse, error)
 }
 
 type submitServiceClient struct {
@@ -37,11 +38,21 @@ func (c *submitServiceClient) SubmitCode(ctx context.Context, in *SubmitCodeRequ
 	return out, nil
 }
 
+func (c *submitServiceClient) ReSubmitCode(ctx context.Context, in *ReSubmitCodeRequest, opts ...grpc.CallOption) (*ReSubmitCodeResponse, error) {
+	out := new(ReSubmitCodeResponse)
+	err := c.cc.Invoke(ctx, "/SubmitService/ReSubmitCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubmitServiceServer is the server API for SubmitService service.
 // All implementations must embed UnimplementedSubmitServiceServer
 // for forward compatibility
 type SubmitServiceServer interface {
 	SubmitCode(context.Context, *SubmitCodeRequest) (*SubmitCodeResponse, error)
+	ReSubmitCode(context.Context, *ReSubmitCodeRequest) (*ReSubmitCodeResponse, error)
 	mustEmbedUnimplementedSubmitServiceServer()
 }
 
@@ -51,6 +62,9 @@ type UnimplementedSubmitServiceServer struct {
 
 func (UnimplementedSubmitServiceServer) SubmitCode(context.Context, *SubmitCodeRequest) (*SubmitCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SubmitCode not implemented")
+}
+func (UnimplementedSubmitServiceServer) ReSubmitCode(context.Context, *ReSubmitCodeRequest) (*ReSubmitCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReSubmitCode not implemented")
 }
 func (UnimplementedSubmitServiceServer) mustEmbedUnimplementedSubmitServiceServer() {}
 
@@ -83,6 +97,24 @@ func _SubmitService_SubmitCode_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubmitService_ReSubmitCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReSubmitCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubmitServiceServer).ReSubmitCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/SubmitService/ReSubmitCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubmitServiceServer).ReSubmitCode(ctx, req.(*ReSubmitCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SubmitService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "SubmitService",
 	HandlerType: (*SubmitServiceServer)(nil),
@@ -90,6 +122,10 @@ var _SubmitService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SubmitCode",
 			Handler:    _SubmitService_SubmitCode_Handler,
+		},
+		{
+			MethodName: "ReSubmitCode",
+			Handler:    _SubmitService_ReSubmitCode_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

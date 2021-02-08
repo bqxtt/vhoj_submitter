@@ -83,8 +83,8 @@ func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 	}
 	defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
-	fmt.Println(string(body))
+	//body, _ := ioutil.ReadAll(res.Body)
+	//fmt.Println(string(body))
 
 	return nil
 }

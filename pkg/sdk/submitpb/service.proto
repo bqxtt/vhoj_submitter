@@ -6,17 +6,26 @@ import "base/base.proto";
 
 service SubmitService {
     rpc SubmitCode(SubmitCodeRequest) returns(SubmitCodeResponse) {};
+    rpc ReSubmitCode(ReSubmitCodeRequest) returns(ReSubmitCodeResponse) {};
 }
 
 message SubmitCodeRequest {
     uint64 problem_id = 1;
     uint64 user_id = 2;
     int32 language = 3;
-    int32 contest_id = 4;
+    uint64 contest_id = 4;
     string source_code = 5;
 }
 
 message SubmitCodeResponse {
-    int64 submission_id = 1;
+    uint64 submission_id = 1;
     base.BaseResponse base_response = 2;
+}
+
+message ReSubmitCodeRequest {
+    uint64 submission_id = 1;
+}
+
+message ReSubmitCodeResponse {
+    base.BaseResponse base_response = 1;
 }

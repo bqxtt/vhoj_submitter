@@ -45,6 +45,11 @@ func (H *HDUAdapter) ToCommonLanguage(s string) language.Language {
 	panic("implement me")
 }
 
-func (H *HDUAdapter) ToOJLanguage(language language.Language) string {
-	panic("implement me")
+func (H *HDUAdapter) ToOJLanguage(lang language.Language) string {
+	switch lang {
+	case language.CPP:
+		return "0"
+	default:
+		return "-1"
+	}
 }
