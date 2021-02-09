@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitpb";
+option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
 
 import "base/base.proto";
 

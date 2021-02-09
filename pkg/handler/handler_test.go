@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap"
-	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitpb"
+	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
 	"os"
 	"os/signal"
 	"syscall"
@@ -14,7 +14,7 @@ import (
 func TestSubmitHandler_SubmitCode(t *testing.T) {
 	bootstrap.Init()
 	handler := NewSubmitHandler()
-	req := &submitpb.SubmitCodeRequest{
+	req := &submitterpb.SubmitCodeRequest{
 		ProblemId:  2,
 		UserId:     1017510,
 		Language:   1,
@@ -35,7 +35,7 @@ func TestSubmitHandler_SubmitCode(t *testing.T) {
 func TestSubmitHandler_ReSubmitCode(t *testing.T) {
 	bootstrap.Init()
 	handler := NewSubmitHandler()
-	request := &submitpb.ReSubmitCodeRequest{SubmissionId: 7}
+	request := &submitterpb.ReSubmitCodeRequest{SubmissionId: 7}
 	resp, err := handler.ReSubmitCode(context.Background(), request)
 	if err != nil {
 		fmt.Printf("err: %v\n", err)

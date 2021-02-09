@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.14.0
-// source: submitpb/service.proto
+// source: submitterpb/service.proto
 
-package submitpb
+package submitterpb
 
 import (
 	base "github.com/ecnuvj/vhoj_submitter/pkg/sdk/base"

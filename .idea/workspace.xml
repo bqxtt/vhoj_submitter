@@ -20,19 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="582c4951-4de0-43cc-ac0f-f08e992cf4e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pkg/handler/handler_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/query_result.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/query_result.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/submit_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/ytask/func/submit_code.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/handler/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/remote/adapter/oj/hdu_adapter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/adapter/oj/hdu_adapter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/remote/submitter/oj/hdu_submitter.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/remote/submitter/oj/hdu_submitter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/sdk/submitpb/service_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sdk/submitpb/service_grpc.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/service/service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,22 +179,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="209" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1611552470414" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1612779956327">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1612861933814">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612779956327" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1612779956327">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612861933814" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1612861933813">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612779956327" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1612779956326">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1612861933813">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612779956326" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1612779956327">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1612861933813">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612779956327" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
     <state width="1493" height="245" key="GridCell.Tab.1.bottom" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
