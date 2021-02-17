@@ -13,7 +13,7 @@ import (
 
 func TestSubmitHandler_SubmitCode(t *testing.T) {
 	bootstrap.Init()
-	handler := NewSubmitHandler()
+	handler, _ := NewSubmitHandler()
 	req := &submitterpb.SubmitCodeRequest{
 		ProblemId:  2,
 		UserId:     1017510,
@@ -34,7 +34,7 @@ func TestSubmitHandler_SubmitCode(t *testing.T) {
 
 func TestSubmitHandler_ReSubmitCode(t *testing.T) {
 	bootstrap.Init()
-	handler := NewSubmitHandler()
+	handler, _ := NewSubmitHandler()
 	request := &submitterpb.ReSubmitCodeRequest{SubmissionId: 7}
 	resp, err := handler.ReSubmitCode(context.Background(), request)
 	if err != nil {

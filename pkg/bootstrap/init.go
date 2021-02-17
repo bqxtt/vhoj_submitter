@@ -1,6 +1,8 @@
 package bootstrap
 
 import (
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/database"
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/rpc_service"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/server"
 )
@@ -8,5 +10,6 @@ import (
 func Init() {
 	server.InitTaskServer()
 	client.InitTaskClient()
-	InitDatabase()
+	database.InitDatabase()
+	rpc_service.InitService()
 }

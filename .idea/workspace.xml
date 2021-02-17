@@ -20,7 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="582c4951-4de0-43cc-ac0f-f08e992cf4e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pkg/bootstrap/rpc_service/init.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compile_proto.bat" beforeDir="false" afterPath="$PROJECT_DIR$/compile_proto.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/database/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/bootstrap/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/bootstrap/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/handler/handler_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/handler/handler_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,19 +72,28 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\bootstrap\ytask\func" />
-      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\manager\test" />
-      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\remote\submitter\oj" />
-      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\remote\loginer\oj" />
-      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\remote\accounter\oj" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\sdk" />
       <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\config" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\bootstrap\database" />
+      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\bootstrap\ytask\func" />
+      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\manager\test" />
+      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\remote\submitter\oj" />
+      <recent name="D:\Users\14861\go\src\github.com\vhoj_submitter\pkg\remote\loginer\oj" />
+    </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestSubmitHandler_ReSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/handler">
+  <component name="RunManager" selected="Go Build.go build github.com/ecnuvj/vhoj_submitter">
+    <configuration name="go build github.com/ecnuvj/vhoj_submitter" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="vhoj_submitter" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/ecnuvj/vhoj_submitter" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestHDUQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="vhoj_submitter" />
       <working_directory value="$PROJECT_DIR$/pkg/remote/querier/oj" />
@@ -99,17 +114,6 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^\QTestMockHandlerSubmitCode\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestPOJQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="vhoj_submitter" />
-      <working_directory value="$PROJECT_DIR$/pkg/remote/querier/oj" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestPOJQuerier_Query\E$" />
       <method v="2" />
     </configuration>
     <configuration name="TestSubmitHandler_ReSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/handler" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -136,11 +140,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/ecnuvj/vhoj_submitter" />
         <item itemvalue="Go Test.TestSubmitHandler_ReSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/handler" />
         <item itemvalue="Go Test.TestSubmitHandler_SubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/handler" />
         <item itemvalue="Go Test.TestMockHandlerSubmitCode in github.com/ecnuvj/vhoj_submitter/pkg/manager/test" />
         <item itemvalue="Go Test.TestHDUQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
-        <item itemvalue="Go Test.TestPOJQuerier_Query in github.com/ecnuvj/vhoj_submitter/pkg/remote/querier/oj" />
       </list>
     </recent_temporary>
   </component>
@@ -179,22 +183,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="209" key="EditFileWatcherDialog/0.0.1536.864@0.0.1536.864" timestamp="1611552470414" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1612861933814">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1613204885476">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1612861933814" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1612861933813">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1613204885476" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1613204885476">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1612861933813">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1613204885476" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1613204885475">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1612861933813">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1613204885475" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1613204885476">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1612861933813" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1613204885476" />
     <state width="1493" height="245" key="GridCell.Tab.1.bottom" timestamp="1612587144833">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

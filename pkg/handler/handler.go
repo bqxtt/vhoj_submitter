@@ -16,10 +16,10 @@ type SubmitHandler struct {
 	submitService *service.SubmitService
 }
 
-func NewSubmitHandler() *SubmitHandler {
+func NewSubmitHandler() (*SubmitHandler, error) {
 	return &SubmitHandler{
 		submitService: &service.SubmitService{},
-	}
+	}, nil
 }
 
 func (s *SubmitHandler) SubmitCode(ctx context.Context, request *submitterpb.SubmitCodeRequest) (*submitterpb.SubmitCodeResponse, error) {
