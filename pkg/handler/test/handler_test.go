@@ -1,9 +1,10 @@
-package handler
+package test
 
 import (
 	"context"
 	"fmt"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap"
+	handler2 "github.com/ecnuvj/vhoj_submitter/pkg/handler"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
 	"os"
 	"os/signal"
@@ -13,7 +14,7 @@ import (
 
 func TestSubmitHandler_SubmitCode(t *testing.T) {
 	bootstrap.Init()
-	handler, _ := NewSubmitHandler()
+	handler, _ := handler2.NewSubmitHandler()
 	req := &submitterpb.SubmitCodeRequest{
 		ProblemId:  2,
 		UserId:     1017510,
@@ -34,7 +35,7 @@ func TestSubmitHandler_SubmitCode(t *testing.T) {
 
 func TestSubmitHandler_ReSubmitCode(t *testing.T) {
 	bootstrap.Init()
-	handler, _ := NewSubmitHandler()
+	handler, _ := handler2.NewSubmitHandler()
 	request := &submitterpb.ReSubmitCodeRequest{SubmissionId: 7}
 	resp, err := handler.ReSubmitCode(context.Background(), request)
 	if err != nil {

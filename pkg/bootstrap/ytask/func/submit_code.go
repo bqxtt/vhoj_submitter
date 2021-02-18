@@ -3,6 +3,7 @@ package _func
 import (
 	"fmt"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
+	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/problem_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
@@ -43,6 +44,10 @@ func SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) {
 		},
 		RealRunId: runId,
 	})
+	err = problem_mapper.ProblemMapper.AddProblemSubmittedCountById(info.ProblemID)
+	if err != nil {
+		//todo log
+	}
 	fmt.Printf("real run id: %v\n", runId)
 	manager.ResultQuery(info, account)
 }

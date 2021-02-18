@@ -50,6 +50,7 @@ func (ss *SubmitService) chooseSuitableRemoteOJ(submission *model.Submission) (*
 	}
 	return submission, &common.SubmissionInfo{
 		SubmissionID:    submission.ID,
+		ProblemID:       submission.ProblemId,
 		RemoteOJ:        remoteOJ,
 		RemoteProblemId: remoteProblemId,
 		RemoteLanguage:  holder.Adapters[remoteOJ].ToOJLanguage(submission.Language),
