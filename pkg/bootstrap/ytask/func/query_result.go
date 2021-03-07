@@ -5,6 +5,7 @@ import (
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/problem_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
+	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
 	ytask "github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
@@ -36,13 +37,16 @@ func QueryResult(info *common.SubmissionInfo, account *common.RemoteAccount) {
 		if err != nil {
 			//todo log
 		}
-		_, _ = submission_mapper.SubmissionMapper.UpdateSubmissionById(&model.Submission{
+		submission, _ := submission_mapper.SubmissionMapper.UpdateSubmissionById(&model.Submission{
 			Model: gorm.Model{
 				ID: info.SubmissionID,
 			},
 			TimeCost:   status.ExeTime,
 			MemoryCost: status.ExeMemory,
 		})
+		if submission != nil {
+			_ = user_mapper.UserMapper.AddUserAcceptCountById(submission.UserId)
+		}
 	}
 	if !status.Status.Finished {
 		_, err := ytask.Client.SetTaskCtl(ytask.Client.RunAfter, 1*time.Second).Send("code", "query_result", info, account)

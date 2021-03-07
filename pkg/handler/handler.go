@@ -4,7 +4,9 @@ import (
 	"context"
 	"fmt"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/language"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
+	"github.com/ecnuvj/vhoj_submitter/pkg/common"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/base"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
 	"github.com/ecnuvj/vhoj_submitter/pkg/service"
@@ -36,6 +38,7 @@ func (s *SubmitHandler) SubmitCode(ctx context.Context, request *submitterpb.Sub
 		},
 		ProblemId: uint(request.ProblemId),
 		UserId:    uint(request.UserId),
+		Username:  request.Username,
 		Language:  language.Language(request.Language),
 		ContestId: uint(request.ContestId),
 	}
@@ -67,5 +70,31 @@ func (s *SubmitHandler) ReSubmitCode(ctx context.Context, request *submitterpb.R
 	}
 	return &submitterpb.ReSubmitCodeResponse{
 		BaseResponse: util.NewDefaultSuccessReply(),
+	}, nil
+}
+
+func (s *SubmitHandler) ListSubmissions(ctx context.Context, request *submitterpb.ListSubmissionsRequest) (*submitterpb.ListSubmissionsResponse, error) {
+	if request == nil {
+		return &submitterpb.ListSubmissionsResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "rpc request is nil"),
+		}, fmt.Errorf("rpc request is nil")
+	}
+	condition := &common.SubmissionSearchCondition{
+		Username:  request.Username,
+		ProblemId: uint(request.ProblemId),
+		Result:    status_type.SubmissionStatusType(request.Result),
+		Language:  language.Language(request.Language),
+	}
+	submissions, pageInfo, err := s.submitService.ListSubmissions(request.PageNo, request.PageSize, condition)
+	if err != nil {
+		return &submitterpb.ListSubmissionsResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "service error: %v", err),
+		}, fmt.Errorf("service error: %v", err)
+	}
+	return &submitterpb.ListSubmissionsResponse{
+		Submissions:  submissions,
+		TotalCount:   pageInfo.TotalCount,
+		TotalPages:   pageInfo.TotalPages,
+		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
 	}, nil
 }

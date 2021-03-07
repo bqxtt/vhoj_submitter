@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
+
+package sdk;
+
+message Submission {
+	uint64 problem_id = 1;
+	uint64 user_id = 2;
+	string username = 3;
+	int32  result = 4;
+	int64  time_cost = 5;
+	int64  memory_cost = 6;
+	int32  language = 7;
+}

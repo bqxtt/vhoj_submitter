@@ -3,10 +3,13 @@ package service
 import (
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/problem_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
+	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
 	"github.com/ecnuvj/vhoj_submitter/pkg/manager"
 	"github.com/ecnuvj/vhoj_submitter/pkg/remote/adapter/holder"
+	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
+	"github.com/ecnuvj/vhoj_submitter/pkg/util"
 )
 
 type SubmitService struct {
@@ -14,6 +17,10 @@ type SubmitService struct {
 
 func (ss *SubmitService) SubmitCode(submission *model.Submission) (*model.Submission, error) {
 	submission, info, err := ss.chooseSuitableRemoteOJ(submission)
+	if err != nil {
+		return nil, err
+	}
+	err = user_mapper.UserMapper.AddUserSubmitCountById(submission.UserId)
 	if err != nil {
 		return nil, err
 	}
@@ -55,5 +62,21 @@ func (ss *SubmitService) chooseSuitableRemoteOJ(submission *model.Submission) (*
 		RemoteProblemId: remoteProblemId,
 		RemoteLanguage:  holder.Adapters[remoteOJ].ToOJLanguage(submission.Language),
 		SourceCode:      submission.SubmissionCode.SourceCode,
+	}, nil
+}
+
+func (SubmitService) ListSubmissions(pageNo int32, pageSize int32, condition *common.SubmissionSearchCondition) ([]*submitterpb.Submission, *common.PageInfo, error) {
+	submissions, count, err := submission_mapper.SubmissionMapper.FindSubmissions(pageNo, pageSize, &submission_mapper.SearchSubmissionCondition{
+		Username:  condition.Username,
+		ProblemId: condition.ProblemId,
+		Status:    condition.Result,
+		Language:  condition.Language,
+	})
+	if err != nil {
+		return nil, nil, err
+	}
+	return util.ModelSubmissionsToRpcSubmissions(submissions), &common.PageInfo{
+		TotalPages: (count + pageSize - 1) / pageSize,
+		TotalCount: count,
 	}, nil
 }

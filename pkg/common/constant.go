@@ -1,7 +1,9 @@
 package common
 
 import (
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/language"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/submission_status"
 )
 
@@ -26,4 +28,11 @@ type RemoteSubmissionResult struct {
 	ExeTime   int64
 	ExeMemory int64
 	CEInfo    string
+}
+
+type SubmissionSearchCondition struct {
+	Username  string
+	ProblemId uint
+	Result    status_type.SubmissionStatusType
+	Language  language.Language
 }

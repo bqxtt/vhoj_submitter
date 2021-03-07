@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 type SubmitServiceClient interface {
 	SubmitCode(ctx context.Context, in *SubmitCodeRequest, opts ...grpc.CallOption) (*SubmitCodeResponse, error)
 	ReSubmitCode(ctx context.Context, in *ReSubmitCodeRequest, opts ...grpc.CallOption) (*ReSubmitCodeResponse, error)
+	ListSubmissions(ctx context.Context, in *ListSubmissionsRequest, opts ...grpc.CallOption) (*ListSubmissionsResponse, error)
 }
 
 type submitServiceClient struct {
@@ -31,7 +32,7 @@ func NewSubmitServiceClient(cc grpc.ClientConnInterface) SubmitServiceClient {
 
 func (c *submitServiceClient) SubmitCode(ctx context.Context, in *SubmitCodeRequest, opts ...grpc.CallOption) (*SubmitCodeResponse, error) {
 	out := new(SubmitCodeResponse)
-	err := c.cc.Invoke(ctx, "/SubmitService/SubmitCode", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/sdk.SubmitService/SubmitCode", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +41,16 @@ func (c *submitServiceClient) SubmitCode(ctx context.Context, in *SubmitCodeRequ
 
 func (c *submitServiceClient) ReSubmitCode(ctx context.Context, in *ReSubmitCodeRequest, opts ...grpc.CallOption) (*ReSubmitCodeResponse, error) {
 	out := new(ReSubmitCodeResponse)
-	err := c.cc.Invoke(ctx, "/SubmitService/ReSubmitCode", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/sdk.SubmitService/ReSubmitCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *submitServiceClient) ListSubmissions(ctx context.Context, in *ListSubmissionsRequest, opts ...grpc.CallOption) (*ListSubmissionsResponse, error) {
+	out := new(ListSubmissionsResponse)
+	err := c.cc.Invoke(ctx, "/sdk.SubmitService/ListSubmissions", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,6 +63,7 @@ func (c *submitServiceClient) ReSubmitCode(ctx context.Context, in *ReSubmitCode
 type SubmitServiceServer interface {
 	SubmitCode(context.Context, *SubmitCodeRequest) (*SubmitCodeResponse, error)
 	ReSubmitCode(context.Context, *ReSubmitCodeRequest) (*ReSubmitCodeResponse, error)
+	ListSubmissions(context.Context, *ListSubmissionsRequest) (*ListSubmissionsResponse, error)
 	mustEmbedUnimplementedSubmitServiceServer()
 }
 
@@ -65,6 +76,9 @@ func (UnimplementedSubmitServiceServer) SubmitCode(context.Context, *SubmitCodeR
 }
 func (UnimplementedSubmitServiceServer) ReSubmitCode(context.Context, *ReSubmitCodeRequest) (*ReSubmitCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReSubmitCode not implemented")
+}
+func (UnimplementedSubmitServiceServer) ListSubmissions(context.Context, *ListSubmissionsRequest) (*ListSubmissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSubmissions not implemented")
 }
 func (UnimplementedSubmitServiceServer) mustEmbedUnimplementedSubmitServiceServer() {}
 
@@ -89,7 +103,7 @@ func _SubmitService_SubmitCode_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SubmitService/SubmitCode",
+		FullMethod: "/sdk.SubmitService/SubmitCode",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SubmitServiceServer).SubmitCode(ctx, req.(*SubmitCodeRequest))
@@ -107,7 +121,7 @@ func _SubmitService_ReSubmitCode_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/SubmitService/ReSubmitCode",
+		FullMethod: "/sdk.SubmitService/ReSubmitCode",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SubmitServiceServer).ReSubmitCode(ctx, req.(*ReSubmitCodeRequest))
@@ -115,8 +129,26 @@ func _SubmitService_ReSubmitCode_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubmitService_ListSubmissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListSubmissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubmitServiceServer).ListSubmissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sdk.SubmitService/ListSubmissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubmitServiceServer).ListSubmissions(ctx, req.(*ListSubmissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SubmitService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "SubmitService",
+	ServiceName: "sdk.SubmitService",
 	HandlerType: (*SubmitServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -126,6 +158,10 @@ var _SubmitService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReSubmitCode",
 			Handler:    _SubmitService_ReSubmitCode_Handler,
+		},
+		{
+			MethodName: "ListSubmissions",
+			Handler:    _SubmitService_ListSubmissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

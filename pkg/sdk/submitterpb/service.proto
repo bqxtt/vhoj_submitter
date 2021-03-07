@@ -2,19 +2,40 @@ syntax = "proto3";
 
 option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
 
+package sdk;
+
 import "base/base.proto";
+import "submitterpb/submission.proto";
 
 service SubmitService {
     rpc SubmitCode(SubmitCodeRequest) returns(SubmitCodeResponse) {};
     rpc ReSubmitCode(ReSubmitCodeRequest) returns(ReSubmitCodeResponse) {};
+    rpc ListSubmissions(ListSubmissionsRequest) returns(ListSubmissionsResponse) {};
+}
+
+message ListSubmissionsRequest{
+    string username = 1;
+    uint64 problem_id = 2;
+    int32  result = 3;
+    int32  language = 4;
+    int32  page_no = 5;
+    int32  page_size = 6;
+}
+
+message ListSubmissionsResponse {
+    repeated Submission submissions = 1;
+    int32 total_pages = 2;
+    int32 total_count = 3;
+    base.BaseResponse base_response = 4;
 }
 
 message SubmitCodeRequest {
     uint64 problem_id = 1;
     uint64 user_id = 2;
-    int32 language = 3;
-    uint64 contest_id = 4;
-    string source_code = 5;
+    string username = 3;
+    int32 language = 4;
+    uint64 contest_id = 5;
+    string source_code = 6;
 }
 
 message SubmitCodeResponse {
