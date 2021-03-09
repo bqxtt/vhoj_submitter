@@ -5,11 +5,13 @@ option go_package = "github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb";
 package sdk;
 
 message Submission {
-	uint64 problem_id = 1;
-	uint64 user_id = 2;
-	string username = 3;
-	int32  result = 4;
-	int64  time_cost = 5;
-	int64  memory_cost = 6;
-	int32  language = 7;
+    uint64 submission_id = 1;
+	uint64 problem_id = 2;
+	uint64 user_id = 3;
+	string username = 4;
+	int32  result = 5;
+	int64  time_cost = 6;
+	int64  memory_cost = 7;
+	int32  language = 8;
+	string code = 9;
 }

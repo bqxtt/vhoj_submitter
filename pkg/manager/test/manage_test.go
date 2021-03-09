@@ -5,6 +5,7 @@ import (
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap"
+	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/database"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/client"
 	"github.com/ecnuvj/vhoj_submitter/pkg/bootstrap/ytask/server"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
@@ -18,12 +19,21 @@ import (
 func TestSubmitCode(t *testing.T) {
 	server.InitTaskServer()
 	client.InitTaskClient()
+	database.InitDatabase()
 	info := &common.SubmissionInfo{
 		RemoteOJ:        remote_oj.HDU,
 		RemoteProblemId: "1000",
 		RemoteLanguage:  "0",
 		RealRunId:       "",
-		SourceCode:      "JTIzaW5jbHVkZSUyMCUzQ2JpdHMlMkZzdGRjJTJCJTJCLmglM0UlMEF1c2luZyUyMG5hbWVzb2FjZSUyMHN0ZCUzQiUwQWludCUyMG1haW4oKSU3QiUwQWludCUyMGElMkNiJTBBcmV0dXJuJTIwMCUzQiUwQSU3RA==",
+		SourceCode: "#include <bits/stdc++.h>\n" +
+			"using namespace std;\n" +
+			"int main()\n" +
+			"{\n" +
+			"int a,b;\n" +
+			"cin >> a >> b;\n" +
+			"cout << a + b << endl;\n" +
+			"return 0;\n" +
+			"}\n",
 		//SourceCode:      "JTIzaW5jbHVkZSUzQ2JpdHMlMkZzdGRjJTJCJTJCLmglM0UlMEF1c2luZyUyMG5hbWVzcGFjZSUyMHN0ZCUzQiUwQWludCUyMG1haW4oKSUwQSU3QiUwQWludCUyMGElMkNiJTNCJTBBd2hpbGUoY2luJTIwJTNFJTNFJTIwYSUyMCUzRSUzRSUyMGIpJTBBJTdCJTBBY291dCUyMCUzQyUzQyUyMGElMjAlMkIlMjBiJTIwJTNDJTNDJTIwZW5kbCUzQiUwQSU3RCUwQXJldHVybiUyMDAlM0IlMEElN0Q=",
 	}
 	manager.SubmitCode(info)

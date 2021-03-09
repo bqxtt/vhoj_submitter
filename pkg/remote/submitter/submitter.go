@@ -10,6 +10,7 @@ type ISubmitter interface {
 	NeedLogin() bool
 	GetMaxRunId(info *common.SubmissionInfo, account *common.RemoteAccount) (string, error)
 	SubmitCode(info *common.SubmissionInfo, account *common.RemoteAccount) error
+	Encode(string) (string, error)
 	mustEmbedDefaultSubmitter()
 }
 
@@ -28,6 +29,10 @@ func (DefaultSubmitterImpl) GetMaxRunId(*common.SubmissionInfo, *common.RemoteAc
 }
 
 func (DefaultSubmitterImpl) SubmitCode(*common.SubmissionInfo, *common.RemoteAccount) error {
+	panic("implement me")
+}
+
+func (DefaultSubmitterImpl) Encode(rawCode string) (string, error) {
 	panic("implement me")
 }
 

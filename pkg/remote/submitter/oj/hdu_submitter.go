@@ -2,6 +2,7 @@ package oj
 
 import (
 	"bytes"
+	"encoding/base64"
 	"fmt"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/remote_oj"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
@@ -11,6 +12,7 @@ import (
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
+	"net/url"
 )
 
 var HduSubmitter submitter.ISubmitter = &HDUSubmitter{}
@@ -55,12 +57,16 @@ func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
 	_ = writer.WriteField("check", "0")
-	_ = writer.WriteField("_usercode", info.SourceCode)
+	code, err := H.Encode(info.SourceCode)
+	if err != nil {
+		return err
+	}
+	_ = writer.WriteField("_usercode", code)
 	_ = writer.WriteField("problemid", info.RemoteProblemId)
 	_ = writer.WriteField("language", info.RemoteLanguage)
-	err := writer.Close()
+	err = writer.Close()
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
 		return err
 	}
 
@@ -87,4 +93,10 @@ func (H *HDUSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 	//fmt.Println(string(body))
 
 	return nil
+}
+
+func (H *HDUSubmitter) Encode(code string) (string, error) {
+	urlEncode := url.QueryEscape(code)
+	encodeString := base64.StdEncoding.EncodeToString([]byte(urlEncode))
+	return encodeString, nil
 }

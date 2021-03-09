@@ -11,6 +11,16 @@ service SubmitService {
     rpc SubmitCode(SubmitCodeRequest) returns(SubmitCodeResponse) {};
     rpc ReSubmitCode(ReSubmitCodeRequest) returns(ReSubmitCodeResponse) {};
     rpc ListSubmissions(ListSubmissionsRequest) returns(ListSubmissionsResponse) {};
+    rpc GetSubmission(GetSubmissionRequest) returns(GetSubmissionResponse) {};
+}
+
+message GetSubmissionRequest {
+    uint64 submission_id = 1;
+}
+
+message GetSubmissionResponse {
+    Submission submission = 1;
+    base.BaseResponse base_response = 2;
 }
 
 message ListSubmissionsRequest{

@@ -9,14 +9,20 @@ func ModelSubmissionToRpcSubmission(submission *model.Submission) *submitterpb.S
 	if submission == nil {
 		return &submitterpb.Submission{}
 	}
+	var code string
+	if submission.SubmissionCode != nil {
+		code = submission.SubmissionCode.SourceCode
+	}
 	return &submitterpb.Submission{
-		ProblemId:  uint64(submission.ProblemId),
-		UserId:     uint64(submission.UserId),
-		Username:   submission.Username,
-		Result:     int32(submission.Result),
-		TimeCost:   submission.TimeCost,
-		MemoryCost: submission.MemoryCost,
-		Language:   int32(submission.Language),
+		SubmissionId: uint64(submission.ID),
+		ProblemId:    uint64(submission.ProblemId),
+		UserId:       uint64(submission.UserId),
+		Username:     submission.Username,
+		Result:       int32(submission.Result),
+		TimeCost:     submission.TimeCost,
+		MemoryCost:   submission.MemoryCost,
+		Language:     int32(submission.Language),
+		Code:         code,
 	}
 }
 

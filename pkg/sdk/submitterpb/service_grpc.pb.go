@@ -20,6 +20,7 @@ type SubmitServiceClient interface {
 	SubmitCode(ctx context.Context, in *SubmitCodeRequest, opts ...grpc.CallOption) (*SubmitCodeResponse, error)
 	ReSubmitCode(ctx context.Context, in *ReSubmitCodeRequest, opts ...grpc.CallOption) (*ReSubmitCodeResponse, error)
 	ListSubmissions(ctx context.Context, in *ListSubmissionsRequest, opts ...grpc.CallOption) (*ListSubmissionsResponse, error)
+	GetSubmission(ctx context.Context, in *GetSubmissionRequest, opts ...grpc.CallOption) (*GetSubmissionResponse, error)
 }
 
 type submitServiceClient struct {
@@ -57,6 +58,15 @@ func (c *submitServiceClient) ListSubmissions(ctx context.Context, in *ListSubmi
 	return out, nil
 }
 
+func (c *submitServiceClient) GetSubmission(ctx context.Context, in *GetSubmissionRequest, opts ...grpc.CallOption) (*GetSubmissionResponse, error) {
+	out := new(GetSubmissionResponse)
+	err := c.cc.Invoke(ctx, "/sdk.SubmitService/GetSubmission", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubmitServiceServer is the server API for SubmitService service.
 // All implementations must embed UnimplementedSubmitServiceServer
 // for forward compatibility
@@ -64,6 +74,7 @@ type SubmitServiceServer interface {
 	SubmitCode(context.Context, *SubmitCodeRequest) (*SubmitCodeResponse, error)
 	ReSubmitCode(context.Context, *ReSubmitCodeRequest) (*ReSubmitCodeResponse, error)
 	ListSubmissions(context.Context, *ListSubmissionsRequest) (*ListSubmissionsResponse, error)
+	GetSubmission(context.Context, *GetSubmissionRequest) (*GetSubmissionResponse, error)
 	mustEmbedUnimplementedSubmitServiceServer()
 }
 
@@ -79,6 +90,9 @@ func (UnimplementedSubmitServiceServer) ReSubmitCode(context.Context, *ReSubmitC
 }
 func (UnimplementedSubmitServiceServer) ListSubmissions(context.Context, *ListSubmissionsRequest) (*ListSubmissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSubmissions not implemented")
+}
+func (UnimplementedSubmitServiceServer) GetSubmission(context.Context, *GetSubmissionRequest) (*GetSubmissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSubmission not implemented")
 }
 func (UnimplementedSubmitServiceServer) mustEmbedUnimplementedSubmitServiceServer() {}
 
@@ -147,6 +161,24 @@ func _SubmitService_ListSubmissions_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubmitService_GetSubmission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSubmissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubmitServiceServer).GetSubmission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sdk.SubmitService/GetSubmission",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubmitServiceServer).GetSubmission(ctx, req.(*GetSubmissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SubmitService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "sdk.SubmitService",
 	HandlerType: (*SubmitServiceServer)(nil),
@@ -162,6 +194,10 @@ var _SubmitService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListSubmissions",
 			Handler:    _SubmitService_ListSubmissions_Handler,
+		},
+		{
+			MethodName: "GetSubmission",
+			Handler:    _SubmitService_GetSubmission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

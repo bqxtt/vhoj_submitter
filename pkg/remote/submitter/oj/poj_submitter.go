@@ -76,3 +76,7 @@ func (P *POJSubmitter) SubmitCode(info *common.SubmissionInfo, account *common.R
 
 	return nil
 }
+
+func (P *POJSubmitter) Encode(code string) (string, error) {
+	return code, nil
+}
