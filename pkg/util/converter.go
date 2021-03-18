@@ -3,6 +3,7 @@ package util
 import (
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
+	"github.com/golang/protobuf/ptypes"
 )
 
 func ModelSubmissionToRpcSubmission(submission *model.Submission) *submitterpb.Submission {
@@ -13,6 +14,7 @@ func ModelSubmissionToRpcSubmission(submission *model.Submission) *submitterpb.S
 	if submission.SubmissionCode != nil {
 		code = submission.SubmissionCode.SourceCode
 	}
+	submitTime, _ := ptypes.TimestampProto(submission.UpdatedAt)
 	return &submitterpb.Submission{
 		SubmissionId: uint64(submission.ID),
 		ProblemId:    uint64(submission.ProblemId),
@@ -23,6 +25,7 @@ func ModelSubmissionToRpcSubmission(submission *model.Submission) *submitterpb.S
 		MemoryCost:   submission.MemoryCost,
 		Language:     int32(submission.Language),
 		Code:         code,
+		SubmitTime:   submitTime,
 	}
 }
 
