@@ -1,6 +1,8 @@
 package service
 
 import (
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
+	"github.com/ecnuvj/vhoj_common/pkg/common/constants/user_problem_status"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/problem_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
@@ -79,4 +81,24 @@ func (SubmitService) ListSubmissions(pageNo int32, pageSize int32, condition *co
 		TotalPages: (count + pageSize - 1) / pageSize,
 		TotalCount: count,
 	}, nil
+}
+
+func (SubmitService) CheckUserProblemStatus(userId uint, problemId uint, contestId uint) (user_problem_status.UserProblemStatus, error) {
+	submissions, err := submission_mapper.SubmissionMapper.FindSubmissionsGroupByResult(&submission_mapper.UserSubmissionCondition{
+		UserId:    userId,
+		ProblemId: problemId,
+		ContestId: contestId,
+	})
+	if err != nil {
+		return user_problem_status.UNKNOWN, err
+	}
+	if len(submissions) == 0 {
+		return user_problem_status.NOT_SUBMIT, nil
+	}
+	for _, s := range submissions {
+		if s.Result == status_type.AC {
+			return user_problem_status.ACCEPTED, nil
+		}
+	}
+	return user_problem_status.ATTEMPTED, nil
 }

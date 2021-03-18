@@ -49,6 +49,8 @@ func (H *HDUAdapter) ToOJLanguage(lang language.Language) string {
 	switch lang {
 	case language.CPP:
 		return "0"
+	case language.JAVA:
+		return "5"
 	default:
 		return "-1"
 	}

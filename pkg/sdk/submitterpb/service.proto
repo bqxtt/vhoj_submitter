@@ -12,6 +12,18 @@ service SubmitService {
     rpc ReSubmitCode(ReSubmitCodeRequest) returns(ReSubmitCodeResponse) {};
     rpc ListSubmissions(ListSubmissionsRequest) returns(ListSubmissionsResponse) {};
     rpc GetSubmission(GetSubmissionRequest) returns(GetSubmissionResponse) {};
+    rpc CheckUserProblemStatus(CheckUserProblemStatusRequest) returns(CheckUserProblemStatusResponse) {};
+}
+
+message CheckUserProblemStatusRequest {
+    uint64 user_id = 1;
+    uint64 problem_id = 2;
+    uint64 contest_id = 3;
+}
+
+message CheckUserProblemStatusResponse {
+    int32 status = 1;
+    base.BaseResponse base_response = 2;
 }
 
 message GetSubmissionRequest {

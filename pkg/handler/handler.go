@@ -6,8 +6,8 @@ import (
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/language"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
+	"github.com/ecnuvj/vhoj_rpc/model/base"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
-	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/base"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
 	"github.com/ecnuvj/vhoj_submitter/pkg/service"
 	"github.com/ecnuvj/vhoj_submitter/pkg/util"
@@ -95,6 +95,24 @@ func (s *SubmitHandler) ListSubmissions(ctx context.Context, request *submitterp
 		Submissions:  submissions,
 		TotalCount:   pageInfo.TotalCount,
 		TotalPages:   pageInfo.TotalPages,
+		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
+	}, nil
+}
+
+func (s *SubmitHandler) CheckUserProblemStatus(ctx context.Context, request *submitterpb.CheckUserProblemStatusRequest) (*submitterpb.CheckUserProblemStatusResponse, error) {
+	if request == nil {
+		return &submitterpb.CheckUserProblemStatusResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "rpc request is nil"),
+		}, fmt.Errorf("rpc request is nil")
+	}
+	status, err := s.submitService.CheckUserProblemStatus(uint(request.UserId), uint(request.ProblemId), uint(request.ContestId))
+	if err != nil {
+		return &submitterpb.CheckUserProblemStatusResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "service error: %v", err),
+		}, fmt.Errorf("service error: %v", err)
+	}
+	return &submitterpb.CheckUserProblemStatusResponse{
+		Status:       int32(status),
 		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
 	}, nil
 }

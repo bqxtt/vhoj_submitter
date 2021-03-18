@@ -6,9 +6,10 @@ require (
 	github.com/aws/aws-sdk-go v1.36.33 // indirect
 	github.com/ecnuvj/vhoj_common v0.0.0-20210204125811-c22717ad12a6
 	github.com/ecnuvj/vhoj_db v0.0.0-00010101000000-000000000000
+	github.com/ecnuvj/vhoj_rpc v0.0.0-20210318154530-31bf2dcf5cc5
 	github.com/gojuukaze/YTask/v2 v2.3.1
 	github.com/golang/mock v1.4.4 // indirect
-	github.com/golang/protobuf v1.4.2
+	github.com/golang/protobuf v1.4.3
 	github.com/golang/snappy v0.0.2 // indirect
 	github.com/google/uuid v1.2.0 // indirect
 	github.com/jinzhu/gorm v1.9.16
