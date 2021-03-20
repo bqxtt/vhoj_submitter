@@ -22,9 +22,10 @@ func (ss *SubmitService) SubmitCode(submission *model.Submission) (*model.Submis
 	if err != nil {
 		return nil, err
 	}
-	err = user_mapper.UserMapper.AddUserSubmitCountById(submission.UserId)
-	if err != nil {
-		return nil, err
+	_ = user_mapper.UserMapper.AddUserSubmitCountById(submission.UserId)
+	if submission.ContestId != 0 {
+		//更新比赛题目提交记录
+		_ = problem_mapper.ProblemMapper.AddContestProblemSubmittedCountById(submission.ContestId, submission.ProblemId)
 	}
 	manager.SubmitCode(info)
 	return submission, nil
@@ -101,4 +102,20 @@ func (SubmitService) CheckUserProblemStatus(userId uint, problemId uint, contest
 		}
 	}
 	return user_problem_status.ATTEMPTED, nil
+}
+
+func (SubmitService) GetSubmission(submissionId uint) (*submitterpb.Submission, error) {
+	submission, err := submission_mapper.SubmissionMapper.FindSubmissionById(submissionId)
+	if err != nil {
+		return nil, err
+	}
+	return util.ModelSubmissionToRpcSubmission(submission), nil
+}
+
+func (SubmitService) GetContestSubmissions(contestId uint) ([]*submitterpb.Submission, error) {
+	submissions, err := submission_mapper.SubmissionMapper.FindSubmissionsByContestId(contestId)
+	if err != nil {
+		return nil, err
+	}
+	return util.ModelSubmissionsToRpcSubmissions(submissions), nil
 }

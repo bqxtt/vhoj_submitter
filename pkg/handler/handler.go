@@ -116,3 +116,39 @@ func (s *SubmitHandler) CheckUserProblemStatus(ctx context.Context, request *sub
 		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
 	}, nil
 }
+
+func (s *SubmitHandler) GetSubmission(ctx context.Context, request *submitterpb.GetSubmissionRequest) (*submitterpb.GetSubmissionResponse, error) {
+	if request == nil {
+		return &submitterpb.GetSubmissionResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "rpc request is nil"),
+		}, fmt.Errorf("rpc request is nil")
+	}
+	submission, err := s.submitService.GetSubmission(uint(request.SubmissionId))
+	if err != nil {
+		return &submitterpb.GetSubmissionResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "service error: %v", err),
+		}, fmt.Errorf("service error: %v", err)
+	}
+	return &submitterpb.GetSubmissionResponse{
+		Submission:   submission,
+		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
+	}, nil
+}
+
+func (s *SubmitHandler) GetContestSubmissions(ctx context.Context, request *submitterpb.GetContestSubmissionsRequest) (*submitterpb.GetContestSubmissionsResponse, error) {
+	if request == nil {
+		return &submitterpb.GetContestSubmissionsResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "rpc request is nil"),
+		}, fmt.Errorf("rpc request is nil")
+	}
+	submissions, err := s.submitService.GetContestSubmissions(uint(request.ContestId))
+	if err != nil {
+		return &submitterpb.GetContestSubmissionsResponse{
+			BaseResponse: util.PbReplyf(base.REPLY_STATUS_FAILURE, "service error: %v", err),
+		}, fmt.Errorf("service error: %v", err)
+	}
+	return &submitterpb.GetContestSubmissionsResponse{
+		Submissions:  submissions,
+		BaseResponse: util.PbReplyf(base.REPLY_STATUS_SUCCESS, "success"),
+	}, nil
+}

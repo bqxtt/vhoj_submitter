@@ -22,6 +22,7 @@ type SubmitServiceClient interface {
 	ListSubmissions(ctx context.Context, in *ListSubmissionsRequest, opts ...grpc.CallOption) (*ListSubmissionsResponse, error)
 	GetSubmission(ctx context.Context, in *GetSubmissionRequest, opts ...grpc.CallOption) (*GetSubmissionResponse, error)
 	CheckUserProblemStatus(ctx context.Context, in *CheckUserProblemStatusRequest, opts ...grpc.CallOption) (*CheckUserProblemStatusResponse, error)
+	GetContestSubmissions(ctx context.Context, in *GetContestSubmissionsRequest, opts ...grpc.CallOption) (*GetContestSubmissionsResponse, error)
 }
 
 type submitServiceClient struct {
@@ -77,6 +78,15 @@ func (c *submitServiceClient) CheckUserProblemStatus(ctx context.Context, in *Ch
 	return out, nil
 }
 
+func (c *submitServiceClient) GetContestSubmissions(ctx context.Context, in *GetContestSubmissionsRequest, opts ...grpc.CallOption) (*GetContestSubmissionsResponse, error) {
+	out := new(GetContestSubmissionsResponse)
+	err := c.cc.Invoke(ctx, "/sdk.SubmitService/GetContestSubmissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubmitServiceServer is the server API for SubmitService service.
 // All implementations must embed UnimplementedSubmitServiceServer
 // for forward compatibility
@@ -86,6 +96,7 @@ type SubmitServiceServer interface {
 	ListSubmissions(context.Context, *ListSubmissionsRequest) (*ListSubmissionsResponse, error)
 	GetSubmission(context.Context, *GetSubmissionRequest) (*GetSubmissionResponse, error)
 	CheckUserProblemStatus(context.Context, *CheckUserProblemStatusRequest) (*CheckUserProblemStatusResponse, error)
+	GetContestSubmissions(context.Context, *GetContestSubmissionsRequest) (*GetContestSubmissionsResponse, error)
 	mustEmbedUnimplementedSubmitServiceServer()
 }
 
@@ -107,6 +118,9 @@ func (UnimplementedSubmitServiceServer) GetSubmission(context.Context, *GetSubmi
 }
 func (UnimplementedSubmitServiceServer) CheckUserProblemStatus(context.Context, *CheckUserProblemStatusRequest) (*CheckUserProblemStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckUserProblemStatus not implemented")
+}
+func (UnimplementedSubmitServiceServer) GetContestSubmissions(context.Context, *GetContestSubmissionsRequest) (*GetContestSubmissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContestSubmissions not implemented")
 }
 func (UnimplementedSubmitServiceServer) mustEmbedUnimplementedSubmitServiceServer() {}
 
@@ -211,6 +225,24 @@ func _SubmitService_CheckUserProblemStatus_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubmitService_GetContestSubmissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContestSubmissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubmitServiceServer).GetContestSubmissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/sdk.SubmitService/GetContestSubmissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubmitServiceServer).GetContestSubmissions(ctx, req.(*GetContestSubmissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _SubmitService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "sdk.SubmitService",
 	HandlerType: (*SubmitServiceServer)(nil),
@@ -234,6 +266,10 @@ var _SubmitService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckUserProblemStatus",
 			Handler:    _SubmitService_CheckUserProblemStatus_Handler,
+		},
+		{
+			MethodName: "GetContestSubmissions",
+			Handler:    _SubmitService_GetContestSubmissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -46,6 +46,10 @@ func QueryResult(info *common.SubmissionInfo, account *common.RemoteAccount) {
 		})
 		if submission != nil {
 			_ = user_mapper.UserMapper.AddUserAcceptCountById(submission.UserId)
+			if submission.ContestId != 0 {
+				//更新比赛题目ac记录
+				_ = problem_mapper.ProblemMapper.AddContestProblemAcceptedCountById(submission.ContestId, submission.ProblemId)
+			}
 		}
 	}
 	if !status.Status.Finished {
