@@ -14,7 +14,7 @@ func ModelSubmissionToRpcSubmission(submission *model.Submission) *submitterpb.S
 	if submission.SubmissionCode != nil {
 		code = submission.SubmissionCode.SourceCode
 	}
-	submitTime, _ := ptypes.TimestampProto(submission.UpdatedAt)
+	submitTime, _ := ptypes.TimestampProto(submission.CreatedAt)
 	return &submitterpb.Submission{
 		SubmissionId: uint64(submission.ID),
 		ProblemId:    uint64(submission.ProblemId),

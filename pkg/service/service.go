@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/user_problem_status"
+	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/contest_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/problem_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
@@ -113,7 +114,11 @@ func (SubmitService) GetSubmission(submissionId uint) (*submitterpb.Submission, 
 }
 
 func (SubmitService) GetContestSubmissions(contestId uint) ([]*submitterpb.Submission, error) {
-	submissions, err := submission_mapper.SubmissionMapper.FindSubmissionsByContestId(contestId)
+	contest, err := contest_mapper.ContestMapper.FindContestById(contestId)
+	if err != nil {
+		return nil, err
+	}
+	submissions, err := submission_mapper.SubmissionMapper.FindSubmissionsByContestId(contestId, contest.StartTime, contest.EndTime)
 	if err != nil {
 		return nil, err
 	}
