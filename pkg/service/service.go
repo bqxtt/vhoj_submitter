@@ -1,6 +1,7 @@
 package service
 
 import (
+	"context"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/user_problem_status"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/contest_mapper"
@@ -8,18 +9,19 @@ import (
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/submission_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
+	"github.com/ecnuvj/vhoj_rpc/client/rpc_remote"
+	"github.com/ecnuvj/vhoj_rpc/model/remotepb"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
-	"github.com/ecnuvj/vhoj_submitter/pkg/manager"
-	"github.com/ecnuvj/vhoj_submitter/pkg/remote/adapter/holder"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
 	"github.com/ecnuvj/vhoj_submitter/pkg/util"
+	"github.com/jinzhu/gorm"
 )
 
 type SubmitService struct {
 }
 
 func (ss *SubmitService) SubmitCode(submission *model.Submission) (*model.Submission, error) {
-	submission, info, err := ss.chooseSuitableRemoteOJ(submission)
+	remoteReq, err := ss.chooseSuitableRemoteOJ(submission)
 	if err != nil {
 		return nil, err
 	}
@@ -27,8 +29,17 @@ func (ss *SubmitService) SubmitCode(submission *model.Submission) (*model.Submis
 	if submission.ContestId != 0 {
 		//更新比赛题目提交记录
 		_ = problem_mapper.ProblemMapper.AddContestProblemSubmittedCountById(submission.ContestId, submission.ProblemId)
+	} else {
+		//更新普通题目提交数
+		_ = problem_mapper.ProblemMapper.AddProblemSubmittedCountById(submission.ProblemId)
 	}
-	manager.SubmitCode(info)
+
+	//manager.SubmitCode(info)
+	resp, err := rpc_remote.RemoteServiceClient.SubmitCode(context.Background(), remoteReq)
+	if err != nil {
+		return nil, err
+	}
+	submission.ID = uint(resp.SubmissionId)
 	return submission, nil
 }
 
@@ -45,27 +56,40 @@ func (ss *SubmitService) ReSubmitCode(submissionId uint) error {
 	return nil
 }
 
-func (ss *SubmitService) chooseSuitableRemoteOJ(submission *model.Submission) (*model.Submission, *common.SubmissionInfo, error) {
+func (ss *SubmitService) chooseSuitableRemoteOJ(submission *model.Submission) (*remotepb.SubmitCodeRequest, error) {
 	problemGroups, err := problem_mapper.ProblemMapper.FindGroupProblemsById(submission.ProblemId)
 	if err != nil {
-		return nil, nil, err
+		if gorm.IsRecordNotFoundError(err) {
+			_ = problem_mapper.ProblemMapper.DeleteProblemById(submission.ProblemId)
+		}
+		return nil, err
 	}
 	//todo 选择最优oj
 	remoteOJ := problemGroups[0].RemoteOJ
 	remoteProblemId := problemGroups[0].RemoteProblemId
 
-	submission.RemoteOJ = remoteOJ
-	submission, err = submission_mapper.SubmissionMapper.AddOrModifySubmission(submission)
-	if err != nil {
-		return nil, nil, err
-	}
-	return submission, &common.SubmissionInfo{
-		SubmissionID:    submission.ID,
-		ProblemID:       submission.ProblemId,
-		RemoteOJ:        remoteOJ,
+	//submission.RemoteOJ = remoteOJ
+	//submission, err = submission_mapper.SubmissionMapper.AddOrModifySubmission(submission)
+	//if err != nil {
+	//	return nil, nil, err
+	//}
+	//return submission, &common.SubmissionInfo{
+	//	SubmissionID:    submission.ID,
+	//	ProblemID:       submission.ProblemId,
+	//	RemoteOJ:        remoteOJ,
+	//	RemoteProblemId: remoteProblemId,
+	//	RemoteLanguage:  holder.Adapters[remoteOJ].ToOJLanguage(submission.Language),
+	//	SourceCode:      submission.SubmissionCode.SourceCode,
+	//}, nil
+	return &remotepb.SubmitCodeRequest{
+		UserId:          uint64(submission.UserId),
+		Username:        submission.Username,
+		RemoteOj:        int32(remoteOJ),
 		RemoteProblemId: remoteProblemId,
-		RemoteLanguage:  holder.Adapters[remoteOJ].ToOJLanguage(submission.Language),
+		ProblemId:       uint64(submission.ProblemId),
+		Language:        int32(submission.Language),
 		SourceCode:      submission.SubmissionCode.SourceCode,
+		ContestId:       uint64(submission.ContestId),
 	}, nil
 }
 

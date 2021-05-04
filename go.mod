@@ -34,3 +34,5 @@ require (
 replace github.com/ecnuvj/vhoj_common => ../vhoj_common
 
 replace github.com/ecnuvj/vhoj_db => ../vhoj_db
+
+replace github.com/ecnuvj/vhoj_rpc => ../vhoj_rpc
