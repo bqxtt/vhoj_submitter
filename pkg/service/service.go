@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/status_type"
 	"github.com/ecnuvj/vhoj_common/pkg/common/constants/user_problem_status"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/contest_mapper"
@@ -10,6 +11,7 @@ import (
 	"github.com/ecnuvj/vhoj_db/pkg/dao/mapper/user_mapper"
 	"github.com/ecnuvj/vhoj_db/pkg/dao/model"
 	"github.com/ecnuvj/vhoj_rpc/client/rpc_remote"
+	"github.com/ecnuvj/vhoj_rpc/model/base"
 	"github.com/ecnuvj/vhoj_rpc/model/remotepb"
 	"github.com/ecnuvj/vhoj_submitter/pkg/common"
 	"github.com/ecnuvj/vhoj_submitter/pkg/sdk/submitterpb"
@@ -39,6 +41,13 @@ func (ss *SubmitService) SubmitCode(submission *model.Submission) (*model.Submis
 	if err != nil {
 		return nil, err
 	}
+	if resp.BaseResponse == nil {
+		return nil, fmt.Errorf("rpc remote error, no resp")
+	}
+	if resp.BaseResponse.Status != base.REPLY_STATUS_SUCCESS {
+		return nil, fmt.Errorf(resp.BaseResponse.Message)
+	}
+
 	submission.ID = uint(resp.SubmissionId)
 	return submission, nil
 }
